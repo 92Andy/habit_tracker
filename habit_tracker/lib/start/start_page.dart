@@ -10,8 +10,33 @@ class StartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: const [
-          _StartPageBackground(),
+        children: [
+          const _StartPageBackground(),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 400,
+              color: const Color(0xffE9E9FF),
+              child: Column(
+                children: [
+                  const Text('Maintain Daily Habit'),
+                  const Text('A habit tracker is a simple way to measure '
+                      'whether you did a habit. The most basic format'
+                      'is to get a calender.'),
+                  TextButton(
+                    onPressed: null,
+                    child: Container(
+                      color: Colors.blue,
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Get Started'),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
