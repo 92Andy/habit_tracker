@@ -24,6 +24,14 @@ class _OverviewPage extends State<OverviewPage> {
       'Index 2: School',
       style: optionStyle,
     ),
+    Text(
+      'Index 3: School',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 4: School',
+      style: optionStyle,
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -41,16 +49,24 @@ class _OverviewPage extends State<OverviewPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.apps_rounded),
+            label: 'Menu',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.access_time_rounded),
+            label: 'Time',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.add),
+            label: 'Add',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.alarm),
+            label: 'Alarm',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
         backgroundColor: const Color(0xff003dab),
