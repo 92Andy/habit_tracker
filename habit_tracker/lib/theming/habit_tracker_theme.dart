@@ -6,7 +6,7 @@ class HabitTrackerTheme {
   static ThemeData lightTheme() {
     return ThemeData(
       textTheme: textLightTheme(),
-      primaryColor: CustomColors.primaryPurple,
+      colorScheme: colorThemeLight(),
     );
   }
 
@@ -20,6 +20,22 @@ class HabitTrackerTheme {
         color: CustomColors.primaryBlue.withOpacity(0.2),
         fontSize: 12,
       ),
+    );
+  }
+
+  static ColorScheme colorThemeLight() {
+    return ColorScheme(
+      primary: CustomColors.primaryPurple,
+      onPrimary: CustomColors.primaryPurple,
+      secondary: CustomColors.primaryDarkBlue,
+      onSecondary: CustomColors.primaryDarkBlue,
+      background: Colors.white,
+      onBackground: Colors.white,
+      surface: CustomColors.surfaceWhite,
+      onSurface: CustomColors.surfaceWhite,
+      error: Colors.red,
+      onError: Colors.red,
+      brightness: Brightness.light,
     );
   }
 }
