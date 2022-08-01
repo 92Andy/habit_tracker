@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/theming/custom_colors.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({Key? key}) : super(key: key);
@@ -69,9 +70,9 @@ class _OverviewPage extends State<OverviewPage> {
             label: 'Settings',
           ),
         ],
-        backgroundColor: const Color(0xff003dab),
+        backgroundColor: CustomColors.primaryDarkBlue,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
+        selectedItemColor: CustomColors.surfaceWhite,
         onTap: _onItemTapped,
       ),
     );
