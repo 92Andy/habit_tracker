@@ -7,4 +7,5 @@ class CustomColors {
   static Color surfaceWhite = const Color(0xffE9E9FF);
 
   static Color testCont = Colors.blue;
+  static Color testCont2 = Colors.red;
 }
