@@ -14,23 +14,23 @@ class _OverviewPage extends State<OverviewPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'Index 0: Menu',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Index 1: Time',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Index 2: Add',
       style: optionStyle,
     ),
     Text(
-      'Index 3: School',
+      'Index 3: Alarm',
       style: optionStyle,
     ),
     Text(
-      'Index 4: School',
+      'Index 4: Setting',
       style: optionStyle,
     ),
   ];
@@ -48,31 +48,36 @@ class _OverviewPage extends State<OverviewPage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.apps_rounded),
+            icon: const Icon(Icons.apps_rounded),
             label: 'Menu',
+            backgroundColor: CustomColors.primaryDarkBlue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.access_time_rounded),
             label: 'Time',
+            backgroundColor: CustomColors.primaryDarkBlue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             label: 'Add',
+            backgroundColor: CustomColors.primaryDarkBlue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.alarm),
             label: 'Alarm',
+            backgroundColor: CustomColors.primaryDarkBlue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
+            backgroundColor: CustomColors.primaryDarkBlue,
           ),
         ],
-        backgroundColor: CustomColors.primaryDarkBlue,
         currentIndex: _selectedIndex,
         selectedItemColor: CustomColors.surfaceWhite,
+        unselectedItemColor: CustomColors.primaryBlue,
         onTap: _onItemTapped,
       ),
     );
