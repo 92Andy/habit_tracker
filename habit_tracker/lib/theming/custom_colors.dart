@@ -5,4 +5,5 @@ class CustomColors {
   static Color primaryBlue = const Color(0xff8EA7F5);
   static Color primaryDarkBlue = const Color(0xff1C03B2);
   static Color surfaceWhite = const Color(0xffFFFFFF);
+  static Color headlineDarkBlue = const Color(0xff1f2a63);
 }

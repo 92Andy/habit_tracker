@@ -13,12 +13,17 @@ class HabitTrackerTheme {
   static TextTheme textLightTheme() {
     return TextTheme(
       headline1: TextStyle(
-          color: CustomColors.primaryDarkBlue,
-          fontSize: 20,
+          color: CustomColors.headlineDarkBlue,
+          fontSize: 28,
           fontWeight: FontWeight.bold),
       bodyText1: TextStyle(
-        color: CustomColors.primaryBlue.withOpacity(0.2),
-        fontSize: 12,
+        color: CustomColors.headlineDarkBlue.withOpacity(0.4),
+        fontSize: 14,
+      ),
+      button: TextStyle(
+        color: CustomColors.surfaceWhite,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
