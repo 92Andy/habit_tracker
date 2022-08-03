@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:rive/rive.dart';
-// ignore: implementation_imports
-import 'package:flutter/src/painting/gradient.dart' as gradient;
 
 class StartPageBackground extends StatelessWidget {
   const StartPageBackground({Key? key}) : super(key: key);
@@ -39,28 +38,7 @@ class _GradientBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: gradient.LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: const [
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.6,
-            0.7,
-            0.8,
-          ],
-          colors: <Color>[
-            const Color(0xffF44FC2).withOpacity(0.2),
-            const Color(0xff8EA7F5).withOpacity(0.25),
-            const Color(0xff8EA7F5).withOpacity(0.2),
-            const Color(0xff8EA7F5).withOpacity(0.5),
-            const Color(0xff8EA7F5).withOpacity(0.4),
-            const Color(0xff8EA7F5).withOpacity(0.7),
-            const Color(0xff8EA7F5),
-          ],
-        ),
+        gradient: styledLightLinearGradient,
       ),
     );
   }
