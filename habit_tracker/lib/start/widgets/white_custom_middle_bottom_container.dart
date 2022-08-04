@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/theming/custom_colors.dart';
 
-import '../../theming/custom_colors.dart';
-
-class WhiteCustomMiddleBottomBar extends StatelessWidget {
-  const WhiteCustomMiddleBottomBar({
+class WhiteCustomMiddleBottomContainer extends StatelessWidget {
+  const WhiteCustomMiddleBottomContainer({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -13,7 +12,6 @@ class WhiteCustomMiddleBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
       painter: _RPSCustomPainter(),
       child: child,
     );

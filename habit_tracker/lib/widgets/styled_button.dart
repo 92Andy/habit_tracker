@@ -24,7 +24,7 @@ class StyledButton extends StatelessWidget {
             color: CustomColors.primaryBlue,
             spreadRadius: -5,
             blurRadius: 10,
-            offset: const Offset(0, 15), // changes position of shadow
+            offset: const Offset(0, 15),
           ),
         ],
         gradient: styledDarkLinearGradient,
