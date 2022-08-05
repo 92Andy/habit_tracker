@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/theming/custom_colors.dart';
 
 class WhiteCustomMiddleBottomContainer extends StatelessWidget {
   const WhiteCustomMiddleBottomContainer({
@@ -12,19 +11,33 @@ class WhiteCustomMiddleBottomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _RPSCustomPainter(),
+      painter: _BottomWhiteContainerPainter(
+        height: 950,
+        width: 400,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+      ),
       child: child,
     );
   }
 }
 
-class _RPSCustomPainter extends CustomPainter {
+class _BottomWhiteContainerPainter extends CustomPainter {
+  const _BottomWhiteContainerPainter({
+    required this.height,
+    required this.width,
+    required this.backgroundColor,
+  });
+
+  final double height;
+  final double width;
+  final Color backgroundColor;
+
   @override
   void paint(Canvas canvas, Size size) {
-    size = const Size(400, 950);
+    size = Size(width, height);
 
     Paint paint0 = Paint()
-      ..color = CustomColors.surfaceWhite
+      ..color = backgroundColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 
