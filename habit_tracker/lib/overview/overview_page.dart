@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/overview/tabs/main_tab_page.dart';
 import 'package:habit_tracker/theming/custom_colors.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -21,10 +22,7 @@ class _OverviewPage extends State<OverviewPage> {
       'Index 1: Time',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: Add',
-      style: optionStyle,
-    ),
+    MainTabPage(),
     Text(
       'Index 3: Alarm',
       style: optionStyle,
