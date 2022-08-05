@@ -13,15 +13,15 @@ class HabitTrackerTheme {
   static TextTheme textLightTheme() {
     return TextTheme(
       headline1: TextStyle(
-          color: CustomColors.headlineDarkBlue,
+          color: colorThemeLight().onSurface,
           fontSize: 28,
           fontWeight: FontWeight.bold),
       bodyText1: TextStyle(
-        color: CustomColors.headlineDarkBlue.withOpacity(0.4),
+        color: colorThemeLight().onSurface.withOpacity(0.4),
         fontSize: 14,
       ),
       button: TextStyle(
-        color: CustomColors.surfaceWhite,
+        color: colorThemeLight().onPrimary,
         fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
@@ -31,15 +31,17 @@ class HabitTrackerTheme {
   static ColorScheme colorThemeLight() {
     return ColorScheme(
       primary: CustomColors.primaryPurple,
-      onPrimary: CustomColors.primaryPurple,
+      onPrimary: CustomColors.surfaceWhite,
       secondary: CustomColors.primaryDarkBlue,
-      onSecondary: CustomColors.primaryDarkBlue,
-      background: Colors.white,
-      onBackground: Colors.white,
+      onSecondary: CustomColors.surfaceWhite,
+      tertiary: CustomColors.primaryBlue,
+      onTertiary: CustomColors.surfaceWhite,
+      background: CustomColors.surfaceWhite,
+      onBackground: CustomColors.primaryDarkBlue,
       surface: CustomColors.surfaceWhite,
-      onSurface: CustomColors.surfaceWhite,
+      onSurface: CustomColors.headlineDarkBlue,
       error: Colors.red,
-      onError: Colors.red,
+      onError: Colors.white,
       brightness: Brightness.light,
     );
   }
