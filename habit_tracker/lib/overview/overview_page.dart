@@ -85,7 +85,7 @@ class _OverviewPage extends State<OverviewPage> {
         ],
         currentIndex: _selectedIndex,
         backgroundColor: Colors.black,
-        unselectedItemColor: CustomColors.primaryBlue,
+        unselectedItemColor: CustomColors.azureBlue,
         onTap: _onItemTapped,
       ),
     );
