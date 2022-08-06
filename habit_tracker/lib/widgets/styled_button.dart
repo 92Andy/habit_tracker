@@ -13,25 +13,28 @@ class StyledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).colorScheme.tertiary,
-            spreadRadius: -5,
-            blurRadius: 10,
-            offset: const Offset(0, 15),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 60,
+        width: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).colorScheme.tertiary,
+              spreadRadius: -5,
+              blurRadius: 10,
+              offset: const Offset(0, 15),
+            ),
+          ],
+          gradient: styledDarkLinearGradient,
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.button,
           ),
-        ],
-        gradient: styledDarkLinearGradient,
-      ),
-      child: Center(
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.button,
         ),
       ),
     );
