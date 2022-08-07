@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/page_transition_test.dart';
-import 'package:habit_tracker/start/start_page.dart';
+import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/theming/habit_tracker_theme.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Habit tracker',
       theme: HabitTrackerTheme.lightTheme(),
-      home: const PageTransitionTest(),
+      home: const PageNavigationController(),
     );
   }
 }

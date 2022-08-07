@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/page_transition_test.dart';
 import 'package:habit_tracker/start/widgets/start_page_background.dart';
 import 'package:habit_tracker/start/widgets/white_custom_middle_bottom_container.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
@@ -7,10 +6,10 @@ import 'package:habit_tracker/widgets/styled_button.dart';
 class StartPage extends StatelessWidget {
   const StartPage({
     Key? key,
-    required this.navigateToCallback,
+    required this.getStartedNavCallback,
   }) : super(key: key);
 
-  final Function(NavigationPage) navigateToCallback;
+  final VoidCallback getStartedNavCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +50,7 @@ class StartPage extends StatelessWidget {
                       child: Center(
                         child: StyledButton(
                           title: 'Get Started',
-                          onTap: () =>
-                              navigateToCallback(NavigationPage.testPage),
+                          onTap: () => getStartedNavCallback(),
                         ),
                       ),
                     )
