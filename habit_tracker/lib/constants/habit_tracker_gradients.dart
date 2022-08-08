@@ -3,10 +3,10 @@ import 'package:habit_tracker/theming/custom_colors.dart';
 
 LinearGradient get styledDarkLinearGradient => LinearGradient(
       colors: [
-        CustomColors.primaryPurple.withOpacity(0.2),
-        CustomColors.primaryBlue.withAlpha(-1).withOpacity(0.7),
-        CustomColors.primaryDarkBlue.withAlpha(-1).withOpacity(0.8),
-        CustomColors.primaryBlue.withAlpha(-1),
+        CustomColors.purple.withOpacity(0.2),
+        CustomColors.olympicBlue.withAlpha(-1).withOpacity(0.7),
+        CustomColors.azureBlue.withAlpha(-1).withOpacity(0.8),
+        CustomColors.olympicBlue.withAlpha(-1),
       ],
       stops: const [
         0.1,
@@ -34,12 +34,12 @@ LinearGradient get styledLightLinearGradient => LinearGradient(
         0.8,
       ],
       colors: <Color>[
-        CustomColors.primaryPurple.withOpacity(0.2),
-        CustomColors.primaryBlue.withOpacity(0.25),
-        CustomColors.primaryBlue.withOpacity(0.6),
-        CustomColors.primaryBlue.withOpacity(0.4),
-        CustomColors.primaryBlue.withOpacity(0.6),
-        CustomColors.primaryBlue.withOpacity(0.7),
-        CustomColors.primaryBlue,
+        CustomColors.purple.withOpacity(0.2),
+        CustomColors.olympicBlue.withOpacity(0.25),
+        CustomColors.olympicBlue.withOpacity(0.6),
+        CustomColors.olympicBlue.withOpacity(0.4),
+        CustomColors.olympicBlue.withOpacity(0.6),
+        CustomColors.olympicBlue.withOpacity(0.7),
+        CustomColors.olympicBlue,
       ],
     );
