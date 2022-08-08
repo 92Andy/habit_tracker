@@ -30,16 +30,16 @@ class HabitTrackerTheme {
 
   static ColorScheme colorThemeLight() {
     return ColorScheme(
-      primary: CustomColors.primaryPurple,
+      primary: CustomColors.purple,
       onPrimary: CustomColors.surfaceWhite,
-      secondary: CustomColors.primaryDarkBlue,
+      secondary: CustomColors.azureBlue,
       onSecondary: CustomColors.surfaceWhite,
-      tertiary: CustomColors.primaryBlue,
+      tertiary: CustomColors.olympicBlue,
       onTertiary: CustomColors.surfaceWhite,
       background: CustomColors.surfaceWhite,
-      onBackground: CustomColors.primaryDarkBlue,
+      onBackground: CustomColors.azureBlue,
       surface: CustomColors.surfaceWhite,
-      onSurface: CustomColors.headlineDarkBlue,
+      onSurface: CustomColors.cobaltBlue,
       error: Colors.red,
       onError: Colors.white,
       brightness: Brightness.light,
