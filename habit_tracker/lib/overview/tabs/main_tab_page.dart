@@ -14,8 +14,40 @@ class MainTabPage extends StatelessWidget {
               gradient: styledLightGradient,
             ),
           ),
-          const Center(
-            child: Text('Hello Main Tab Page'),
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    const Icon(Icons.emoji_emotions_sharp),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const <Widget>[
+                          Text(
+                            'Good Day',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            'Andy Eckhardt',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
