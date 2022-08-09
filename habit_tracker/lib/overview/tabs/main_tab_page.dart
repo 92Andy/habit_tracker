@@ -20,9 +20,12 @@ class MainTabPage extends StatelessWidget {
               children: [
                 Row(
                   children: <Widget>[
-                    const Icon(Icons.emoji_emotions_sharp),
+                    const Icon(
+                      Icons.emoji_emotions_sharp,
+                      size: 50.0,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30),
+                      padding: const EdgeInsets.only(left: 30, top: 20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const <Widget>[
@@ -45,6 +48,44 @@ class MainTabPage extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0),
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          Row(
+                            children: const <Widget>[
+                              Icon(Icons.bed_rounded),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15.0),
+                                child: Text('Sleep'),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: const <Widget>[
+                              Icon(Icons.directions_walk_rounded),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15.0),
+                                child: Text('Walking'),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: const <Widget>[
+                              Icon(Icons.directions_bike_outlined),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15.0),
+                                child: Text('Cycling'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
