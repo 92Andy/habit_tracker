@@ -37,8 +37,61 @@ class _HabitTrackerAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-      painter: RPSCustomPainter(),
+      painter: AppBarCustomPainter(
+        size: Size(
+          MediaQuery.of(context).size.width,
+          height * 3.5,
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: height / 4,
+          left: 30,
+          right: 30,
+        ),
+        child: Stack(
+          children: [
+            SizedBox(
+              height: 48,
+              width: 48,
+              child: TextButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all<Color>(
+                      CustomColors.surfaceWhite.withOpacity(0.1)),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      CustomColors.surfaceWhite.withOpacity(0.1)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(28.0),
+                    ),
+                  ),
+                ),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: 20,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: Text(
+                    'Add Habit',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1!
+                        .copyWith(color: Colors.white, fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -58,12 +111,16 @@ ui.Gradient get _AppBarGradient => ui.Gradient.linear(
     ],
     TileMode.clamp);
 
-class RPSCustomPainter extends CustomPainter {
+class AppBarCustomPainter extends CustomPainter {
+  const AppBarCustomPainter({
+    required this.size,
+  });
+
+  final Size size;
   //Todo: size as parameter
   @override
   void paint(Canvas canvas, Size size) {
-    size = Size(400, 750);
-
+    size = this.size;
     Paint paint0 = Paint()
       ..style = PaintingStyle.fill
       ..maskFilter = const MaskFilter.blur(
