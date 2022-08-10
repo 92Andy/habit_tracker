@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/theming/custom_colors.dart';
 
+import 'dart:ui' as ui;
+
 LinearGradient get styledDarkGradient => LinearGradient(
       colors: [
         CustomColors.purple.withOpacity(0.2),
@@ -60,3 +62,18 @@ LinearGradient get styledLightGradient => LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     );
+
+ui.Gradient get darkGradientShader => ui.Gradient.linear(
+    const Offset(0, 0),
+    const Offset(200, 240),
+    [
+      CustomColors.azureBlue,
+      CustomColors.olympicBlue,
+      CustomColors.purple,
+    ],
+    [
+      0.1,
+      0.6,
+      1,
+    ],
+    TileMode.clamp);
