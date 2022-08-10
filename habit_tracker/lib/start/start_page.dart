@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/start/widgets/start_page_background.dart';
-import 'package:habit_tracker/start/widgets/white_custom_middle_bottom_container.dart';
+import 'package:habit_tracker/widgets/custom_shaped_bottom_container.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -18,7 +18,8 @@ class StartPage extends StatelessWidget {
       body: Stack(
         children: [
           const StartPageBackground(),
-          WhiteCustomMiddleBottomContainer(
+          CustomShapedBottomContainer(
+            backgroundColor: Theme.of(context).colorScheme.surface,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: SizedBox(

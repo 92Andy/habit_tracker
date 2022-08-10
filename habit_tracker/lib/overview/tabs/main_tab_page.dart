@@ -50,28 +50,34 @@ class MainTabPage extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
+                  padding: const EdgeInsets.only(top: 40.0),
                   child: Row(
                     children: [
                       Column(
                         children: [
-                          Row(
-                            children: const <Widget>[
-                              Icon(Icons.bed_rounded),
-                              Padding(
-                                padding: EdgeInsets.only(left: 15.0),
-                                child: Text('Sleep'),
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              children: const <Widget>[
+                                Icon(Icons.bed_rounded),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 15.0),
+                                  child: Text('Sleep'),
+                                ),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const <Widget>[
-                              Icon(Icons.directions_walk_rounded),
-                              Padding(
-                                padding: EdgeInsets.only(left: 15.0),
-                                child: Text('Walking'),
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              children: const <Widget>[
+                                Icon(Icons.directions_walk_rounded),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 15.0),
+                                  child: Text('Walking'),
+                                ),
+                              ],
+                            ),
                           ),
                           Row(
                             children: const <Widget>[
