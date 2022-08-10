@@ -38,7 +38,7 @@ class _GradientBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: styledLightLinearGradient,
+        gradient: styledMiddleGradient,
       ),
     );
   }

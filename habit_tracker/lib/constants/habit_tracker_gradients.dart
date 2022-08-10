@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/theming/custom_colors.dart';
 
-LinearGradient get styledDarkLinearGradient => LinearGradient(
+LinearGradient get styledDarkGradient => LinearGradient(
       colors: [
         CustomColors.purple.withOpacity(0.2),
         CustomColors.olympicBlue.withAlpha(-1).withOpacity(0.7),
@@ -21,7 +21,7 @@ LinearGradient get styledDarkLinearGradient => LinearGradient(
       end: Alignment.bottomRight,
     );
 
-LinearGradient get styledLightLinearGradient => LinearGradient(
+LinearGradient get styledMiddleGradient => LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       stops: const [
@@ -42,4 +42,21 @@ LinearGradient get styledLightLinearGradient => LinearGradient(
         CustomColors.olympicBlue.withOpacity(0.7),
         CustomColors.olympicBlue,
       ],
+    );
+
+LinearGradient get styledLightGradient => LinearGradient(
+      colors: [
+        CustomColors.surfaceWhite,
+        CustomColors.olympicBlueLight,
+        CustomColors.purpleLight,
+        CustomColors.surfaceWhite
+      ],
+      stops: const [
+        0.1,
+        0.35,
+        0.6,
+        1,
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
     );
