@@ -4,12 +4,20 @@ import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 
 class AddHabitPage extends StatelessWidget {
-  const AddHabitPage({Key? key}) : super(key: key);
+  const AddHabitPage({
+    Key? key,
+    required this.navBack,
+  }) : super(key: key);
+
+  final VoidCallback navBack;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HabitTrackerAppBar(title: 'Add habit'),
+      appBar: HabitTrackerAppBar(
+        title: 'Add habit',
+        onBackTapped: navBack,
+      ),
       body: Stack(
         children: const [
           AddHabitBackground(),

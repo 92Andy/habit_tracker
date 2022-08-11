@@ -28,6 +28,13 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
     );
   }
 
+  void navBack() {
+    controller.previousPage(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeIn,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageView(
@@ -38,7 +45,9 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
         StartPage(
           getStartedNavCallback: getStarted,
         ),
-        AddHabitPage(),
+        AddHabitPage(
+          navBack: navBack,
+        ),
       ],
     );
   }
