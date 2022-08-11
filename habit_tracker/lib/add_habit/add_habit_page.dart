@@ -35,8 +35,15 @@ class AddHabitPage extends StatelessWidget {
   }
 }
 
-class _AddHabitView extends StatelessWidget {
+class _AddHabitView extends StatefulWidget {
   const _AddHabitView({Key? key}) : super(key: key);
+
+  @override
+  State<_AddHabitView> createState() => _AddHabitViewState();
+}
+
+class _AddHabitViewState extends State<_AddHabitView> {
+  TextEditingController habitTitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +60,21 @@ class _AddHabitView extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Theme.of(context).colorScheme.surface,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 3,
+              horizontal: 15,
+            ),
+            child: TextField(
+              controller: habitTitleController,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Enter Habit Title',
+                hintStyle: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 50),
