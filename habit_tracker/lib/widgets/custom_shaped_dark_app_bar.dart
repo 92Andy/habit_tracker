@@ -35,23 +35,13 @@ class HabitTrackerAppBar extends StatelessWidget
         ),
         child: Stack(
           children: [
-            SizedBox(
-              height: 48,
-              width: 48,
-              child: TextButton(
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: CustomColors.surfaceWhite.withOpacity(0.1),
+              child: IconButton(
                 onPressed: onBackTapped,
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.all<Color>(
-                      CustomColors.surfaceWhite.withOpacity(0.1)),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      CustomColors.surfaceWhite.withOpacity(0.1)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(28.0),
-                    ),
-                  ),
-                ),
-                child: Icon(
+                splashColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                icon: Icon(
                   Icons.arrow_back,
                   size: 20,
                   color: Theme.of(context).colorScheme.surface,
