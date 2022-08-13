@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/add_habit/widgets/add_habit_background.dart';
+import 'package:habit_tracker/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 
@@ -132,16 +133,11 @@ class _AddHabitViewState extends State<_AddHabitView> {
                       ),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Slider(
-                          value: 10,
-                          min: 0,
-                          max: 50,
-                          onChanged: (nextValue) {},
-                        ),
+                        child: GoalGradientSlider(),
                       ),
                     ),
                   )
