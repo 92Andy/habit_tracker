@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:habit_tracker/widgets/custom_shaped_bottom_container.dart';
 
 class MainTabPage extends StatelessWidget {
   const MainTabPage({Key? key}) : super(key: key);
@@ -95,6 +96,11 @@ class MainTabPage extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          CustomShapedBottomContainer(
+            backgroundGradient: darkGradientShader,
+            height: 650,
+            child: Text('Etwas'),
           ),
         ],
       ),
