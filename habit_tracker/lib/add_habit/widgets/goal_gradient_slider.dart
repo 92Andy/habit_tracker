@@ -1,37 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/theming/custom_colors.dart';
 
-class GoalGradientSlider extends StatelessWidget {
+import 'dart:ui' as ui;
+
+class GoalGradientSlider extends StatefulWidget {
   const GoalGradientSlider({Key? key}) : super(key: key);
+
+  @override
+  State<GoalGradientSlider> createState() => _GoalGradientSliderState();
+}
+
+class _GoalGradientSliderState extends State<GoalGradientSlider> {
+  double value = 14;
 
   @override
   Widget build(BuildContext context) {
     return SliderTheme(
-      data: const SliderThemeData(
+      data: SliderThemeData(
         trackShape: _GradientRectSliderTrackShape(darkenInactive: false),
+        thumbShape: RoundSliderThumbShape(),
       ),
       child: Slider(
-        value: 10,
+        value: value,
         min: 0,
         max: 50,
-        onChanged: (nextValue) {},
+        divisions: 50,
+        label: value.round().toString(),
+        onChanged: (newValue) {
+          setState(() {
+            value = newValue;
+          });
+        },
       ),
+    );
+  }
+}
+
+class RoundSliderThumbShape extends SliderComponentShape {
+  RoundSliderThumbShape();
+
+  final double radius = 16;
+  final Paint painter = Paint()
+    ..shader = ui.Gradient.linear(
+        const Offset(0, 73),
+        const Offset(-50, 0),
+        [
+          CustomColors.olympicBlue,
+          CustomColors.azureBlue,
+          CustomColors.olympicBlue,
+        ],
+        [
+          0.2,
+          0.5,
+          0.7,
+        ],
+        TileMode.mirror);
+
+  @override
+  Size getPreferredSize(bool isEnabled, bool isDiscrete) {
+    return Size.fromRadius(radius);
+  }
+
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {
+    final Canvas canvas = context.canvas;
+    canvas.drawCircle(
+      center,
+      radius,
+      painter,
     );
   }
 }
 
 class _GradientRectSliderTrackShape extends SliderTrackShape
     with BaseSliderTrackShape {
-  const _GradientRectSliderTrackShape({
-    this.gradient = const LinearGradient(
-      colors: [
-        Colors.red,
-        Colors.yellow,
-      ],
-    ),
+  _GradientRectSliderTrackShape({
     this.darkenInactive = true,
   });
 
-  final LinearGradient gradient;
+  final LinearGradient gradient = LinearGradient(
+    colors: [
+      CustomColors.purpleLight,
+      CustomColors.olympicBlue,
+      CustomColors.azureBlue,
+    ],
+  );
   final bool darkenInactive;
 
   @override
