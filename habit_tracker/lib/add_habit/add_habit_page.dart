@@ -111,9 +111,9 @@ class _AddHabitViewState extends State<_AddHabitView> {
           ),
           const _SmallSpacer(),
           _WhiteRoundedContainer(
-            height: 320,
+            height: 330,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25.0),
+              padding: const EdgeInsets.only(top: 25),
               child: Column(
                 children: [
                   Wrap(
@@ -122,7 +122,9 @@ class _AddHabitViewState extends State<_AddHabitView> {
                     spacing: 10,
                     children: iconButtons,
                   ),
-                  const _MiddleSpacer(),
+                  const SizedBox(
+                    height: 40,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 35),
                     child: Align(
@@ -133,12 +135,11 @@ class _AddHabitViewState extends State<_AddHabitView> {
                       ),
                     ),
                   ),
-                  const Expanded(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: GoalGradientSlider(),
-                      ),
+                  const _MiddleSpacer(),
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: GoalGradientSlider(),
                     ),
                   )
                 ],
