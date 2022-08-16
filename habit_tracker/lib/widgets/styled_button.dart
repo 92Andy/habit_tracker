@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 
+final BorderRadius _circularBorderRadius = BorderRadius.circular(16);
+
 class StyledButton extends StatelessWidget {
   const StyledButton({
     Key? key,
@@ -13,23 +15,26 @@ class StyledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60,
-        width: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.tertiary,
-              spreadRadius: -5,
-              blurRadius: 10,
-              offset: const Offset(0, 15),
-            ),
-          ],
-          gradient: styledDarkLinearGradient,
-        ),
+    return Container(
+      height: 60,
+      width: 200,
+      decoration: BoxDecoration(
+        borderRadius: _circularBorderRadius,
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).colorScheme.tertiary,
+            spreadRadius: -5,
+            blurRadius: 10,
+            offset: const Offset(0, 15),
+          ),
+        ],
+        gradient: styledDarkLinearGradient,
+      ),
+      child: MaterialButton(
+        onPressed: onTap,
+        shape: RoundedRectangleBorder(borderRadius: _circularBorderRadius),
+        splashColor: Colors.white.withOpacity(0.1),
+        highlightColor: Colors.white.withOpacity(0.1),
         child: Center(
           child: Text(
             title,
