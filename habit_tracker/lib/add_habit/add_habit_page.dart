@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/add_habit/widgets/add_habit_background.dart';
 import 'package:habit_tracker/add_habit/widgets/goal_gradient_slider.dart';
+import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 
 final List<Widget> iconButtons = [
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.gym,
     onTap: () {},
   ),
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.cycling,
     onTap: () {},
   ),
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.weightLifting,
     onTap: () {},
   ),
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.running,
     onTap: () {},
   ),
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.skippingRope,
     onTap: () {},
   ),
   _CustomIconButton(
-    iconData: Icons.model_training,
+    iconAsset: HabitTrackerIcon.kettleBell,
+    onTap: () {},
+  ),
+  _CustomIconButton(
+    iconAsset: HabitTrackerIcon.swimming,
+    onTap: () {},
+  ),
+  _CustomIconButton(
+    iconAsset: HabitTrackerIcon.more,
     onTap: () {},
   ),
 ];
@@ -201,20 +210,24 @@ class _WhiteRoundedContainer extends StatelessWidget {
 class _CustomIconButton extends StatelessWidget {
   const _CustomIconButton({
     Key? key,
-    required this.iconData,
+    required this.iconAsset,
     required this.onTap,
   }) : super(key: key);
 
-  final IconData iconData;
+  final String iconAsset;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 30,
-      backgroundColor: Colors.grey.withOpacity(0.2),
+      backgroundColor: Colors.grey.withOpacity(0.05),
       child: IconButton(
-        icon: Icon(iconData),
+        icon: Image.asset(
+          iconAsset,
+          height: 25,
+          color: Theme.of(context).colorScheme.secondary,
+        ),
         color: Theme.of(context).colorScheme.onBackground,
         onPressed: onTap,
       ),
