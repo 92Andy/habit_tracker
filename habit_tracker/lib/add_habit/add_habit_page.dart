@@ -207,7 +207,7 @@ class _WhiteRoundedContainer extends StatelessWidget {
   }
 }
 
-class _CustomIconButton extends StatelessWidget {
+class _CustomIconButton extends StatefulWidget {
   const _CustomIconButton({
     Key? key,
     required this.iconAsset,
@@ -218,18 +218,34 @@ class _CustomIconButton extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
+  State<_CustomIconButton> createState() => _CustomIconButtonState();
+}
+
+class _CustomIconButtonState extends State<_CustomIconButton> {
+  bool isTapped = false;
+  Color get backGroundColor => isTapped
+      ? Theme.of(context).colorScheme.secondary
+      : Colors.grey.withOpacity(0.05);
+  Color get iconColor =>
+      isTapped ? Colors.white : Theme.of(context).colorScheme.secondary;
+
+  @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 30,
-      backgroundColor: Colors.grey.withOpacity(0.05),
+      backgroundColor: backGroundColor,
       child: IconButton(
         icon: Image.asset(
-          iconAsset,
+          widget.iconAsset,
           height: 25,
-          color: Theme.of(context).colorScheme.secondary,
+          color: iconColor,
         ),
-        color: Theme.of(context).colorScheme.onBackground,
-        onPressed: onTap,
+        onPressed: () {
+          setState(() {
+            isTapped = !isTapped;
+          });
+          widget.onTap();
+        },
       ),
     );
   }
