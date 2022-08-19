@@ -19,6 +19,10 @@ class _GoalGradientSliderState extends State<GoalGradientSlider> {
       data: SliderThemeData(
         trackShape: _GradientRectSliderTrackShape(darkenInactive: false),
         thumbShape: RoundSliderThumbShape(),
+        trackHeight: 11,
+        inactiveTrackColor: CustomColors.olympicBlueLight,
+        valueIndicatorColor: CustomColors.purple,
+        showValueIndicator: ShowValueIndicator.never,
       ),
       child: Slider(
         value: value,
@@ -56,6 +60,8 @@ class RoundSliderThumbShape extends SliderComponentShape {
         ],
         TileMode.mirror);
 
+  final _indicatorShape = const RectangularSliderValueIndicatorShape();
+
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
     return Size.fromRadius(radius);
@@ -80,7 +86,35 @@ class RoundSliderThumbShape extends SliderComponentShape {
     canvas.drawCircle(
       center,
       radius,
-      painter,
+      painter
+        ..shader = ui.Gradient.linear(
+            Offset(center.dx - 50, center.dy),
+            Offset(center.dx, center.dy + 50),
+            [
+              CustomColors.olympicBlue,
+              CustomColors.azureBlue,
+              CustomColors.olympicBlue,
+            ],
+            [
+              0.2,
+              0.5,
+              0.7,
+            ],
+            TileMode.mirror),
+    );
+    _indicatorShape.paint(
+      context,
+      Offset(center.dx, center.dy - 5),
+      activationAnimation: const AlwaysStoppedAnimation(1),
+      enableAnimation: enableAnimation,
+      isDiscrete: isDiscrete,
+      labelPainter: labelPainter,
+      parentBox: parentBox,
+      sliderTheme: sliderTheme,
+      textDirection: textDirection,
+      value: value,
+      textScaleFactor: textScaleFactor,
+      sizeWithOverflow: sizeWithOverflow,
     );
   }
 }
@@ -96,6 +130,11 @@ class _GradientRectSliderTrackShape extends SliderTrackShape
       CustomColors.purpleLight,
       CustomColors.olympicBlue,
       CustomColors.azureBlue,
+    ],
+    stops: const [
+      0.2,
+      0.6,
+      1,
     ],
   );
   final bool darkenInactive;
@@ -144,16 +183,11 @@ class _GradientRectSliderTrackShape extends SliderTrackShape
     final ColorTween activeTrackColorTween = ColorTween(
         begin: sliderTheme.disabledActiveTrackColor,
         end: sliderTheme.activeTrackColor);
-    final ColorTween inactiveTrackColorTween = darkenInactive
-        ? ColorTween(
-            begin: sliderTheme.disabledInactiveTrackColor,
-            end: sliderTheme.inactiveTrackColor)
-        : activeTrackColorTween;
     final Paint activePaint = Paint()
       ..shader = gradient.createShader(activeGradientRect)
       ..color = activeTrackColorTween.evaluate(enableAnimation)!;
     final Paint inactivePaint = Paint()
-      ..color = inactiveTrackColorTween.evaluate(enableAnimation)!;
+      ..color = sliderTheme.inactiveTrackColor!;
     final Paint leftTrackPaint;
     final Paint rightTrackPaint;
     switch (textDirection) {
