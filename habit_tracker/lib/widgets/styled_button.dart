@@ -28,7 +28,7 @@ class StyledButton extends StatelessWidget {
             offset: const Offset(0, 15),
           ),
         ],
-        gradient: styledDarkLinearGradient,
+        gradient: styledDarkGradient,
       ),
       child: MaterialButton(
         onPressed: onTap,
