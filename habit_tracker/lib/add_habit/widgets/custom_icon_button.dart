@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomIconButton extends StatefulWidget {
   const CustomIconButton({
@@ -25,12 +26,12 @@ class _CustomIconButtonState extends State<CustomIconButton> {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 30,
+      radius: 8.w,
       backgroundColor: backGroundColor,
       child: IconButton(
         icon: Image.asset(
           widget.iconAsset,
-          height: 25,
+          height: 8.w,
           color: iconColor,
         ),
         onPressed: () {
