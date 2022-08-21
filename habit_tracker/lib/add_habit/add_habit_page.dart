@@ -5,6 +5,7 @@ import 'package:habit_tracker/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 final List<Widget> iconButtons = [
   CustomIconButton(
@@ -52,20 +53,24 @@ class AddHabitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HabitTrackerAppBar(
-        title: 'Add habit',
-        onBackTapped: navBack,
-      ),
       body: Stack(
-        children: const [
-          AddHabitBackground(),
-          Padding(
-            padding: EdgeInsets.only(
-              top: 100,
-              left: 30,
-              right: 30,
-            ),
-            child: _AddHabitView(),
+        children: [
+          const AddHabitBackground(),
+          Column(
+            children: [
+              HabitTrackerAppBar(
+                title: 'Add habit',
+                onBackTapped: navBack,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  top: 30,
+                  left: 30,
+                  right: 30,
+                ),
+                child: _AddHabitView(),
+              ),
+            ],
           ),
         ],
       ),
@@ -91,15 +96,14 @@ class _AddHabitViewState extends State<_AddHabitView> {
         children: [
           Text(
             'Habit title',
-            style:
-                Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18),
+            style: Theme.of(context).textTheme.headline2,
           ),
           const _SmallSpacer(),
           _WhiteRoundedContainer(
             height: 60,
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 3,
+                vertical: 5,
                 horizontal: 15,
               ),
               child: TextField(
@@ -116,8 +120,7 @@ class _AddHabitViewState extends State<_AddHabitView> {
           const _MiddleSpacer(),
           Text(
             'Choose an Activity',
-            style:
-                Theme.of(context).textTheme.headline1!.copyWith(fontSize: 18),
+            style: Theme.of(context).textTheme.headline2,
           ),
           const _SmallSpacer(),
           _WhiteRoundedContainer(

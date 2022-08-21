@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HabitTrackerAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const HabitTrackerAppBar({
+  HabitTrackerAppBar({
     Key? key,
     required this.title,
     this.onBackTapped,
-    this.height = 200,
   }) : super(key: key);
 
-  final double height;
   final String title;
   final VoidCallback? onBackTapped;
+
+  final double height = 15.h;
 
   @override
   Size get preferredSize => Size.fromHeight(height);
@@ -23,47 +24,53 @@ class HabitTrackerAppBar extends StatelessWidget
     return CustomPaint(
       painter: _AppBarCustomPainter(
         size: Size(
-          MediaQuery.of(context).size.width,
-          height * 3.5,
+          100.w,
+          100.h - height,
         ),
       ),
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: height / 4,
-          left: 30,
-          right: 30,
-        ),
-        child: Stack(
-          children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: CustomColors.surfaceWhite.withOpacity(0.1),
-              child: IconButton(
-                onPressed: onBackTapped,
-                splashColor: CustomColors.surfaceWhite.withOpacity(0.1),
-                icon: Icon(
-                  Icons.arrow_back,
-                  size: 20,
-                  color: Theme.of(context).colorScheme.surface,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 14),
-                  child: Text(
-                    title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1!
-                        .copyWith(color: Colors.white, fontSize: 20),
+      child: SizedBox(
+        height: height,
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: height / 4,
+            left: 20,
+            right: 20,
+          ),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                  child: IconButton(
+                    onPressed: onBackTapped,
+                    splashColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 20,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
