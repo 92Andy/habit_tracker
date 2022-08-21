@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'custom_colors.dart';
 
@@ -14,15 +15,20 @@ class HabitTrackerTheme {
     return TextTheme(
       headline1: TextStyle(
           color: colorThemeLight().onSurface,
-          fontSize: 28,
+          fontSize: 24.sp,
           fontWeight: FontWeight.bold),
+      headline2: TextStyle(
+        color: colorThemeLight().onSurface,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.bold,
+      ),
       bodyText1: TextStyle(
         color: colorThemeLight().onSurface.withOpacity(0.4),
-        fontSize: 14,
+        fontSize: 15.sp,
       ),
       button: TextStyle(
         color: colorThemeLight().onPrimary,
-        fontSize: 14,
+        fontSize: 15.sp,
         fontWeight: FontWeight.bold,
       ),
     );
