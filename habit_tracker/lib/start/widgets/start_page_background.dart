@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:rive/rive.dart';
 
 class StartPageBackground extends StatelessWidget {
@@ -23,9 +24,9 @@ class _Shaker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: 50.0,
-      child: const SizedBox(
-        height: 700,
-        child: RiveAnimation.asset('assets/rive/shaker.riv'),
+      child: SizedBox(
+        height: 85.h,
+        child: const RiveAnimation.asset('assets/rive/shaker.riv'),
       ),
     );
   }
