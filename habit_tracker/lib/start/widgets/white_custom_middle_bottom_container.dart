@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WhiteCustomMiddleBottomContainer extends StatelessWidget {
   const WhiteCustomMiddleBottomContainer({
@@ -12,8 +13,8 @@ class WhiteCustomMiddleBottomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _BottomWhiteContainerPainter(
-        height: 950,
-        width: 400,
+        height: 115.h,
+        width: 100.w,
         backgroundColor: Theme.of(context).colorScheme.surface,
       ),
       child: child,

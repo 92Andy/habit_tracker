@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 final BorderRadius _circularBorderRadius = BorderRadius.circular(16);
 
@@ -17,7 +18,7 @@ class StyledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      width: 200,
+      width: 50.w,
       decoration: BoxDecoration(
         borderRadius: _circularBorderRadius,
         boxShadow: [
