@@ -5,7 +5,6 @@ import 'package:habit_tracker/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 final List<Widget> iconButtons = [
   CustomIconButton(
