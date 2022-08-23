@@ -54,27 +54,27 @@ class _OverviewPage extends State<OverviewPage> {
           BottomNavigationBarItem(
             icon: const Icon(Icons.apps_rounded),
             label: 'Menu',
-            backgroundColor: CustomColors.primaryDarkBlue,
+            backgroundColor: CustomColors.azureBlue,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.access_time_rounded),
             label: 'Time',
-            backgroundColor: CustomColors.primaryDarkBlue,
+            backgroundColor: CustomColors.azureBlue,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.add),
             label: 'Add',
-            backgroundColor: CustomColors.primaryDarkBlue,
+            backgroundColor: CustomColors.azureBlue,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.alarm),
             label: 'Alarm',
-            backgroundColor: CustomColors.primaryDarkBlue,
+            backgroundColor: CustomColors.azureBlue,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: CustomColors.primaryDarkBlue,
+            backgroundColor: CustomColors.azureBlue,
           ),
         ],
         currentIndex: _selectedIndex,
