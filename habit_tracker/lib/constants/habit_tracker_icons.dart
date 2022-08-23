@@ -9,4 +9,5 @@ class HabitTrackerIcon {
   static String get kettleBell => 'assets/icons/kettlebell.png';
   static String get swimming => 'assets/icons/swimming.png';
   static String get more => 'assets/icons/more.png';
+  static String get batman => 'assets/icons/batman.png';
 }

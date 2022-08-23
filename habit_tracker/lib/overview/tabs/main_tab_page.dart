@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:habit_tracker/constants/habit_tracker_icons.dart';
+import 'package:habit_tracker/theming/custom_colors.dart';
 import 'package:habit_tracker/widgets/custom_shaped_bottom_container.dart';
 
 class MainTabPage extends StatelessWidget {
@@ -21,29 +23,34 @@ class MainTabPage extends StatelessWidget {
               children: [
                 Row(
                   children: <Widget>[
-                    const Icon(
-                      Icons.emoji_emotions_sharp,
-                      size: 50.0,
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: CustomColors.purpleLight,
+                      child: Image.asset(
+                        HabitTrackerIcon.batman,
+                        height: 35,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 30, top: 20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const <Widget>[
+                        children: <Widget>[
                           Text(
                             'Good Day',
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(fontSize: 16),
                           ),
                           Text(
                             'Andy Eckhardt',
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(fontSize: 20),
                           ),
                         ],
                       ),
@@ -59,11 +66,17 @@ class MainTabPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0),
                             child: Row(
-                              children: const <Widget>[
-                                Icon(Icons.bed_rounded),
+                              children: <Widget>[
+                                const Icon(Icons.bed_rounded),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 15.0),
-                                  child: Text('Sleep'),
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Sleep',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline1!
+                                        .copyWith(fontSize: 16),
+                                  ),
                                 ),
                               ],
                             ),
@@ -71,21 +84,33 @@ class MainTabPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0),
                             child: Row(
-                              children: const <Widget>[
-                                Icon(Icons.directions_walk_rounded),
+                              children: <Widget>[
+                                const Icon(Icons.directions_walk_rounded),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 15.0),
-                                  child: Text('Walking'),
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Walking',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline1!
+                                        .copyWith(fontSize: 16),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Row(
-                            children: const <Widget>[
-                              Icon(Icons.directions_bike_outlined),
+                            children: <Widget>[
+                              const Icon(Icons.directions_bike_outlined),
                               Padding(
-                                padding: EdgeInsets.only(left: 15.0),
-                                child: Text('Cycling'),
+                                padding: const EdgeInsets.only(left: 15.0),
+                                child: Text(
+                                  'Cycling',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1!
+                                      .copyWith(fontSize: 16),
+                                ),
                               ),
                             ],
                           ),
