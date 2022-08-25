@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class CustomIconButton extends StatefulWidget {
-  const CustomIconButton({
+class IconAssetButton extends StatefulWidget {
+  const IconAssetButton({
     Key? key,
     required this.iconAsset,
     required this.onTap,
@@ -12,10 +12,10 @@ class CustomIconButton extends StatefulWidget {
   final VoidCallback onTap;
 
   @override
-  State<CustomIconButton> createState() => _CustomIconButtonState();
+  State<IconAssetButton> createState() => _IconAssetButtonState();
 }
 
-class _CustomIconButtonState extends State<CustomIconButton> {
+class _IconAssetButtonState extends State<IconAssetButton> {
   bool isTapped = false;
   Color get backGroundColor => isTapped
       ? Theme.of(context).colorScheme.secondary
