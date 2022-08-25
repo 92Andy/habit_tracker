@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WhiteCustomMiddleBottomContainer extends StatelessWidget {
-  const WhiteCustomMiddleBottomContainer({
+import 'dart:ui' as ui;
+
+import 'package:habit_tracker/theming/custom_colors.dart';
+
+class CustomShapedBottomContainer extends StatelessWidget {
+  const CustomShapedBottomContainer({
     Key? key,
     required this.child,
+    this.height = 950,
+    this.backgroundColor,
+    this.backgroundGradient,
   }) : super(key: key);
 
   final Widget child;
+  final double height;
+  final Color? backgroundColor;
+  final ui.Gradient? backgroundGradient;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _BottomWhiteContainerPainter(
-        height: 115.h,
-        width: 100.w,
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        height: height,
+        width: MediaQuery.of(context).size.width,
+        backgroundColor: backgroundColor,
+        backgroundGradient: backgroundGradient,
       ),
       child: child,
     );
@@ -26,21 +36,31 @@ class _BottomWhiteContainerPainter extends CustomPainter {
   const _BottomWhiteContainerPainter({
     required this.height,
     required this.width,
-    required this.backgroundColor,
+    this.backgroundColor,
+    this.backgroundGradient,
   });
 
   final double height;
   final double width;
-  final Color backgroundColor;
+  final Color? backgroundColor;
+  final ui.Gradient? backgroundGradient;
 
   @override
   void paint(Canvas canvas, Size size) {
     size = Size(width, height);
 
-    Paint paint0 = Paint()
-      ..color = backgroundColor
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 1;
+    Paint? paint0;
+    if (backgroundGradient != null) {
+      paint0 = Paint()
+        ..style = PaintingStyle.fill
+        ..maskFilter = const MaskFilter.blur(BlurStyle.solid, 5);
+      paint0.shader = backgroundGradient;
+    } else {
+      paint0 = Paint()
+        ..color = backgroundColor ?? CustomColors.surfaceWhite
+        ..style = PaintingStyle.fill
+        ..strokeWidth = 1;
+    }
 
     Path path0 = Path();
     path0.moveTo(0, size.height * 0.5128718);

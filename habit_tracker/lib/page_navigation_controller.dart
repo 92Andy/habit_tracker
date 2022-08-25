@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/add_habit/add_habit_page.dart';
+import 'package:habit_tracker/overview/overview_page.dart';
 import 'package:habit_tracker/start/start_page.dart';
 
 class PageNavigationController extends StatefulWidget {
@@ -45,6 +46,7 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
         StartPage(
           getStartedNavCallback: getStarted,
         ),
+        const OverviewPage(),
         AddHabitPage(
           navBack: navBack,
         ),
