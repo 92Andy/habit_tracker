@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/add_habit/widgets/add_habit_background.dart';
-import 'package:habit_tracker/add_habit/widgets/custom_icon_button.dart';
+import 'package:habit_tracker/widgets/light_gradient_background_container.dart';
+import 'package:habit_tracker/add_habit/widgets/icon_asset_button.dart';
 import 'package:habit_tracker/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
-import 'package:habit_tracker/widgets/custom_shaped_dark_app_bar.dart';
+import 'package:habit_tracker/add_habit/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 
 final List<Widget> iconButtons = [
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.gym,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.cycling,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.weightLifting,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.running,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.skippingRope,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.kettleBell,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.swimming,
     onTap: () {},
   ),
-  CustomIconButton(
+  IconAssetButton(
     iconAsset: HabitTrackerIcon.more,
     onTap: () {},
   ),
@@ -54,7 +54,7 @@ class AddHabitPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const AddHabitBackground(),
+          const LightGradientBackgroundContainer(),
           Column(
             children: [
               HabitTrackerAppBar(
