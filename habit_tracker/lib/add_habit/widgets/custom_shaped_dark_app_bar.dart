@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
-import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HabitTrackerAppBar extends StatelessWidget
@@ -42,10 +42,12 @@ class HabitTrackerAppBar extends StatelessWidget
                 alignment: Alignment.centerLeft,
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                  backgroundColor:
+                      HabitTrackerColors.surfaceWhite.withOpacity(0.1),
                   child: IconButton(
                     onPressed: onBackTapped,
-                    splashColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                    splashColor:
+                        HabitTrackerColors.surfaceWhite.withOpacity(0.1),
                     icon: Icon(
                       Icons.arrow_back,
                       size: 20,

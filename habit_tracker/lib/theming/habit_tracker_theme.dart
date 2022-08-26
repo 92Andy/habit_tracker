@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'custom_colors.dart';
+import '../constants/habit_tracker_colors.dart';
 
 class HabitTrackerTheme {
   static ThemeData lightTheme() {
@@ -36,16 +36,16 @@ class HabitTrackerTheme {
 
   static ColorScheme colorThemeLight() {
     return ColorScheme(
-      primary: CustomColors.purple,
-      onPrimary: CustomColors.surfaceWhite,
-      secondary: CustomColors.azureBlue,
-      onSecondary: CustomColors.surfaceWhite,
-      tertiary: CustomColors.olympicBlue,
-      onTertiary: CustomColors.surfaceWhite,
-      background: CustomColors.surfaceWhite,
-      onBackground: CustomColors.azureBlue,
-      surface: CustomColors.surfaceWhite,
-      onSurface: CustomColors.cobaltBlue,
+      primary: HabitTrackerColors.purple,
+      onPrimary: HabitTrackerColors.surfaceWhite,
+      secondary: HabitTrackerColors.azureBlue,
+      onSecondary: HabitTrackerColors.surfaceWhite,
+      tertiary: HabitTrackerColors.olympicBlue,
+      onTertiary: HabitTrackerColors.surfaceWhite,
+      background: HabitTrackerColors.surfaceWhite,
+      onBackground: HabitTrackerColors.azureBlue,
+      surface: HabitTrackerColors.surfaceWhite,
+      onSurface: HabitTrackerColors.cobaltBlue,
       error: Colors.red,
       onError: Colors.white,
       brightness: Brightness.light,

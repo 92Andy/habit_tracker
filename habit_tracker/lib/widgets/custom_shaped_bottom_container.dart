@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:ui' as ui;
 
-import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 
 class CustomShapedBottomContainer extends StatelessWidget {
   const CustomShapedBottomContainer({
@@ -57,7 +57,7 @@ class _BottomWhiteContainerPainter extends CustomPainter {
       paint0.shader = backgroundGradient;
     } else {
       paint0 = Paint()
-        ..color = backgroundColor ?? CustomColors.surfaceWhite
+        ..color = backgroundColor ?? HabitTrackerColors.surfaceWhite
         ..style = PaintingStyle.fill
         ..strokeWidth = 1;
     }

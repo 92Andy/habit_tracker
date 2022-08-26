@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomColors {
+class HabitTrackerColors {
   static Color purple = const Color(0xffee73cd);
   static Color olympicBlue = const Color(0xff4498df);
   static Color azureBlue = const Color(0xff002083);
