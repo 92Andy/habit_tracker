@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 
 import 'dart:ui' as ui;
 
@@ -20,8 +20,8 @@ class _GoalGradientSliderState extends State<GoalGradientSlider> {
         trackShape: _GradientRectSliderTrackShape(darkenInactive: false),
         thumbShape: RoundSliderThumbShape(),
         trackHeight: 11,
-        inactiveTrackColor: CustomColors.olympicBlueLight,
-        valueIndicatorColor: CustomColors.purple,
+        inactiveTrackColor: HabitTrackerColors.olympicBlueLight,
+        valueIndicatorColor: HabitTrackerColors.purple,
         showValueIndicator: ShowValueIndicator.never,
       ),
       child: Slider(
@@ -49,9 +49,9 @@ class RoundSliderThumbShape extends SliderComponentShape {
         const Offset(0, 73),
         const Offset(-50, 0),
         [
-          CustomColors.olympicBlue,
-          CustomColors.azureBlue,
-          CustomColors.olympicBlue,
+          HabitTrackerColors.olympicBlue,
+          HabitTrackerColors.azureBlue,
+          HabitTrackerColors.olympicBlue,
         ],
         [
           0.2,
@@ -91,9 +91,9 @@ class RoundSliderThumbShape extends SliderComponentShape {
             Offset(center.dx - 50, center.dy),
             Offset(center.dx, center.dy + 50),
             [
-              CustomColors.olympicBlue,
-              CustomColors.azureBlue,
-              CustomColors.olympicBlue,
+              HabitTrackerColors.olympicBlue,
+              HabitTrackerColors.azureBlue,
+              HabitTrackerColors.olympicBlue,
             ],
             [
               0.2,
@@ -127,9 +127,9 @@ class _GradientRectSliderTrackShape extends SliderTrackShape
 
   final LinearGradient gradient = LinearGradient(
     colors: [
-      CustomColors.purpleLight,
-      CustomColors.olympicBlue,
-      CustomColors.azureBlue,
+      HabitTrackerColors.purpleLight,
+      HabitTrackerColors.olympicBlue,
+      HabitTrackerColors.azureBlue,
     ],
     stops: const [
       0.2,

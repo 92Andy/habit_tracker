@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -48,10 +48,11 @@ class BottomNavBar extends StatelessWidget {
             Expanded(
               child: CircleAvatar(
                 radius: 30,
-                backgroundColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                backgroundColor:
+                    HabitTrackerColors.surfaceWhite.withOpacity(0.1),
                 child: IconButton(
                   onPressed: null,
-                  splashColor: CustomColors.surfaceWhite.withOpacity(0.1),
+                  splashColor: HabitTrackerColors.surfaceWhite.withOpacity(0.1),
                   icon: Icon(
                     Icons.add,
                     size: 20,
