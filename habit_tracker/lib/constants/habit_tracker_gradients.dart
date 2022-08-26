@@ -23,6 +23,25 @@ LinearGradient get styledDarkGradient => LinearGradient(
       end: Alignment.bottomRight,
     );
 
+LinearGradient get styledFullGradient => LinearGradient(
+      colors: [
+        HabitTrackerColors.purple,
+        HabitTrackerColors.olympicBlue,
+        HabitTrackerColors.azureBlue.withOpacity(0.85),
+        HabitTrackerColors.olympicBlue,
+        HabitTrackerColors.purple
+      ],
+      stops: const [
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        0.9,
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+
 LinearGradient get styledMiddleGradient => LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
