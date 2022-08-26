@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
-import 'package:habit_tracker/theming/custom_colors.dart';
+import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/widgets/custom_shaped_bottom_container.dart';
 
 class MainTabPage extends StatelessWidget {
@@ -25,7 +25,7 @@ class MainTabPage extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 30,
-                      backgroundColor: CustomColors.purpleLight,
+                      backgroundColor: HabitTrackerColors.purpleLight,
                       child: Image.asset(
                         HabitTrackerIcon.batman,
                         height: 35,
