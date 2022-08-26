@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
+import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -16,14 +17,14 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 12.h,
+    return CurvedContainer(
+      height: 16.h,
       color: Theme.of(context).colorScheme.secondary,
       child: Padding(
         padding: EdgeInsets.only(
           right: 8.w,
           left: 8.w,
-          top: 1.h,
+          top: 4.5.h,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
