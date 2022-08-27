@@ -20,7 +20,6 @@ class StartPage extends StatelessWidget {
         gradient: styledMiddleGradient,
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         body: Stack(
           children: [
             const _Shaker(),
