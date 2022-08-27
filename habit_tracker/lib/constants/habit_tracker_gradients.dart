@@ -43,33 +43,27 @@ LinearGradient get styledFullGradient => LinearGradient(
     );
 
 LinearGradient get styledMiddleGradient => LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
+      colors: [
+        HabitTrackerColors.surfaceWhite,
+        HabitTrackerColors.olympicBlueLight,
+        HabitTrackerColors.purpleLight,
+        HabitTrackerColors.surfaceWhite
+      ],
       stops: const [
         0.1,
-        0.17,
-        0.3,
-        0.45,
+        0.35,
         0.6,
-        0.7,
-        0.8,
+        1,
       ],
-      colors: <Color>[
-        HabitTrackerColors.purple.withOpacity(0.2),
-        HabitTrackerColors.olympicBlue.withOpacity(0.25),
-        HabitTrackerColors.olympicBlue.withOpacity(0.6),
-        HabitTrackerColors.olympicBlue.withOpacity(0.4),
-        HabitTrackerColors.olympicBlue.withOpacity(0.6),
-        HabitTrackerColors.olympicBlue.withOpacity(0.7),
-        HabitTrackerColors.olympicBlue,
-      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
     );
 
 LinearGradient get styledLightGradient => LinearGradient(
       colors: [
         HabitTrackerColors.surfaceWhite,
-        HabitTrackerColors.olympicBlueLight,
-        HabitTrackerColors.purpleLight,
+        HabitTrackerColors.olympicBlueLight.withOpacity(0.3),
+        HabitTrackerColors.purpleLight.withOpacity(0.3),
         HabitTrackerColors.surfaceWhite
       ],
       stops: const [

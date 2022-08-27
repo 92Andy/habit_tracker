@@ -8,6 +8,7 @@ class HabitTrackerTheme {
     return ThemeData(
       textTheme: textLightTheme(),
       colorScheme: colorThemeLight(),
+      scaffoldBackgroundColor: Colors.white,
     );
   }
 
