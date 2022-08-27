@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Habit tracker',
           theme: HabitTrackerTheme.lightTheme(),
-          home: const PageNavigationController(),
+          home: const Scaffold(
+            backgroundColor: Colors.white,
+            body: PageNavigationController(),
+          ),
         );
       },
     );
