@@ -3,12 +3,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:habit_tracker/overview/widgets/add_habit_button.dart';
 import 'package:habit_tracker/overview/widgets/bottom_nav_bar.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class OverviewPage extends StatelessWidget {
-  const OverviewPage({Key? key}) : super(key: key);
+  const OverviewPage({
+    Key? key,
+    required this.navToAddHabitPage,
+  }) : super(key: key);
+
+  final VoidCallback navToAddHabitPage;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +22,20 @@ class OverviewPage extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: styledLightGradient,
       ),
-      child: const Scaffold(
-        body: _OverviewView(),
+      child: Scaffold(
+        body: _OverviewView(navToAddHabitPage: navToAddHabitPage),
       ),
     );
   }
 }
 
 class _OverviewView extends StatefulWidget {
-  const _OverviewView({Key? key}) : super(key: key);
+  const _OverviewView({
+    Key? key,
+    required this.navToAddHabitPage,
+  }) : super(key: key);
+
+  final VoidCallback navToAddHabitPage;
 
   @override
   State<_OverviewView> createState() => __OverviewViewState();
@@ -90,7 +101,8 @@ class __OverviewViewState extends State<_OverviewView> {
           child: BottomNavBar(
             currentIndex: 0,
             iconTapped: (i) {},
-            navToAddHabit: () {},
+            middleWidget:
+                AddHabitButton(navToAddHabitPage: widget.navToAddHabitPage),
           ),
         ),
       ],

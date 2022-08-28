@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -7,12 +6,12 @@ class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     Key? key,
     required this.iconTapped,
-    required this.navToAddHabit,
+    required this.middleWidget,
     required this.currentIndex,
   }) : super(key: key);
 
   final Function(int) iconTapped;
-  final VoidCallback navToAddHabit;
+  final Widget middleWidget;
   final int currentIndex;
 
   @override
@@ -46,22 +45,9 @@ class BottomNavBar extends StatelessWidget {
                 size: 30,
               ),
             ),
-            Expanded(
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor:
-                    HabitTrackerColors.surfaceWhite.withOpacity(0.1),
-                child: IconButton(
-                  onPressed: null,
-                  splashColor: HabitTrackerColors.surfaceWhite.withOpacity(0.1),
-                  icon: Icon(
-                    Icons.add,
-                    size: 20,
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
-                ),
-              ),
-            ),
+            const Spacer(),
+            middleWidget,
+            const Spacer(),
             IconButton(
               onPressed: null,
               icon: Icon(

@@ -22,7 +22,7 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
     super.initState();
   }
 
-  void getStarted() {
+  void moveToNextPage() {
     controller.nextPage(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
@@ -43,13 +43,9 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
       physics: const NeverScrollableScrollPhysics(),
       controller: controller,
       children: [
-        StartPage(
-          getStartedNavCallback: getStarted,
-        ),
-        const OverviewPage(),
-        AddHabitPage(
-          navBack: navBack,
-        ),
+        StartPage(getStartedNavCallback: moveToNextPage),
+        OverviewPage(navToAddHabitPage: moveToNextPage),
+        AddHabitPage(navBack: navBack),
       ],
     );
   }
