@@ -61,6 +61,25 @@ LinearGradient get styledFullWithLightPurpleGradient => LinearGradient(
       end: Alignment.bottomRight,
     );
 
+LinearGradient get styledFullWithLightPurpleGradient => LinearGradient(
+      colors: [
+        HabitTrackerColors.purpleLight,
+        HabitTrackerColors.olympicBlue,
+        HabitTrackerColors.azureBlue.withOpacity(0.5),
+        HabitTrackerColors.olympicBlue,
+        HabitTrackerColors.purpleLight
+      ],
+      stops: const [
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        0.9,
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+
 LinearGradient get styledMiddleGradient => LinearGradient(
       colors: [
         HabitTrackerColors.surfaceWhite,
