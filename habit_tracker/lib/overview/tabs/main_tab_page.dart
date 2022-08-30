@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
-import 'package:habit_tracker/widgets/custom_shaped_bottom_container.dart';
+import 'package:habit_tracker/widgets/curved_container.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MainTabPage extends StatelessWidget {
   const MainTabPage({Key? key}) : super(key: key);
@@ -12,11 +15,6 @@ class MainTabPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: styledLightGradient,
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
@@ -122,12 +120,65 @@ class MainTabPage extends StatelessWidget {
               ],
             ),
           ),
-          CustomShapedBottomContainer(
-            backgroundGradient: darkGradientShader,
-            height: 650,
-            child: Text('Etwas'),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: _TodaysHabits(),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _TodaysHabits extends StatelessWidget {
+  const _TodaysHabits({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CurvedContainer(
+      height: 55.h,
+      boxDecoration: BoxDecoration(
+        gradient: styledFullGradient,
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.05),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 8.h,
+              horizontal: 10.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Todays Habits',
+                      style: Theme.of(context).textTheme.headline2!.copyWith(
+                            color: HabitTrackerColors.surfaceWhite,
+                          ),
+                    ),
+                    CircleAvatar(
+                      radius: 6.w,
+                      backgroundColor:
+                          HabitTrackerColors.surfaceWhite.withOpacity(0.1),
+                      child: IconButton(
+                        icon: Icon(Icons.menu,
+                            color: HabitTrackerColors.surfaceWhite),
+                        onPressed: () {},
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
