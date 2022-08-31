@@ -47,7 +47,7 @@ class AddHabitButton extends StatelessWidget {
               highlightColor: whiteWithSmallOpacity,
               child: Icon(
                 Icons.add,
-                size: 20,
+                size: 30,
                 color: Theme.of(context).colorScheme.surface,
               ),
             ),
