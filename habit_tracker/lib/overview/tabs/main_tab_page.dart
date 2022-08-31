@@ -1,11 +1,46 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/widgets/icon_asset_button.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
+import 'package:habit_tracker/overview/domain/habit.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+final List<Habit> todaysHabits = [
+  Habit(
+    title: 'Night Sleep',
+    iconString: HabitTrackerIcon.sleep,
+    status: HabitStatus.completed,
+    startTime: '07:00 AM',
+  ),
+  Habit(
+    title: 'Morning Walk',
+    iconString: HabitTrackerIcon.walking,
+    status: HabitStatus.completed,
+    startTime: '09:00 AM',
+  ),
+  Habit(
+    title: 'Cycling',
+    iconString: HabitTrackerIcon.cycling,
+    status: HabitStatus.completed,
+    startTime: '10:00 AM',
+  ),
+  Habit(
+    title: 'Swimming',
+    iconString: HabitTrackerIcon.swimming,
+    status: HabitStatus.completed,
+    startTime: '03:00 PM',
+  ),
+  Habit(
+    title: 'Weight Lifting',
+    iconString: HabitTrackerIcon.weightLifting,
+    status: HabitStatus.completed,
+    startTime: '06:00 PM',
+  ),
+];
 
 class MainTabPage extends StatelessWidget {
   const MainTabPage({Key? key}) : super(key: key);
@@ -175,9 +210,61 @@ class _TodaysHabits extends StatelessWidget {
                     )
                   ],
                 ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: todaysHabits.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 15),
+                        child: _TodayHabitCard(habit: todaysHabits[index]),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TodayHabitCard extends StatelessWidget {
+  const _TodayHabitCard({
+    Key? key,
+    required this.habit,
+  }) : super(key: key);
+
+  final Habit habit;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(.1),
+            borderRadius: const BorderRadius.all(Radius.circular(25)),
+            border: Border.all(
+              width: 2,
+              color: Colors.white.withOpacity(.5),
+            ),
+          ),
+          child: Row(children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: IconAssetButton(
+                iconAsset: habit.iconString,
+                inactiveBackgroundColor: Colors.white.withOpacity(.25),
+                inactiveIconColor: Colors.white,
+                activeIconColor: Colors.white,
+                onTap: () {},
+              ),
+            )
+          ]),
         ),
       ),
     );
