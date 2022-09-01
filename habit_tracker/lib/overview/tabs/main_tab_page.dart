@@ -230,13 +230,25 @@ class _TodaysHabits extends StatelessWidget {
   }
 }
 
-class _TodayHabitCard extends StatelessWidget {
+class _TodayHabitCard extends StatefulWidget {
   const _TodayHabitCard({
     Key? key,
     required this.habit,
   }) : super(key: key);
 
   final Habit habit;
+
+  @override
+  State<_TodayHabitCard> createState() => _TodayHabitCardState();
+}
+
+class _TodayHabitCardState extends State<_TodayHabitCard> {
+  bool isTapped = false;
+  Color get backGroundColor => isTapped
+      ? HabitTrackerColors.azureBlue.withOpacity(.3)
+      : Colors.white.withOpacity(.1);
+  Color get borderColor =>
+      isTapped ? Colors.white.withOpacity(.3) : Colors.white.withOpacity(.5);
 
   @override
   Widget build(BuildContext context) {
@@ -246,11 +258,11 @@ class _TodayHabitCard extends StatelessWidget {
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.1),
+            color: backGroundColor,
             borderRadius: const BorderRadius.all(Radius.circular(25)),
             border: Border.all(
               width: 2,
-              color: Colors.white.withOpacity(.5),
+              color: borderColor,
             ),
           ),
           child: Row(
@@ -261,11 +273,15 @@ class _TodayHabitCard extends StatelessWidget {
                   right: 10,
                 ),
                 child: IconAssetButton(
-                  iconAsset: habit.iconString,
+                  iconAsset: widget.habit.iconString,
                   inactiveBackgroundColor: Colors.white.withOpacity(.25),
                   inactiveIconColor: Colors.white,
                   activeIconColor: Colors.white,
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      isTapped = !isTapped;
+                    });
+                  },
                 ),
               ),
               Expanded(
@@ -279,11 +295,11 @@ class _TodayHabitCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            habit.title,
+                            widget.habit.title,
                             style: Theme.of(context).textTheme.headline3,
                           ),
                           Text(
-                            habit.startTime,
+                            widget.habit.startTime,
                             style: Theme.of(context).textTheme.bodyText2,
                           ),
                         ],
@@ -291,7 +307,7 @@ class _TodayHabitCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      habit.status.getString(),
+                      widget.habit.status.getString(),
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ],
