@@ -253,18 +253,52 @@ class _TodayHabitCard extends StatelessWidget {
               color: Colors.white.withOpacity(.5),
             ),
           ),
-          child: Row(children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: IconAssetButton(
-                iconAsset: habit.iconString,
-                inactiveBackgroundColor: Colors.white.withOpacity(.25),
-                inactiveIconColor: Colors.white,
-                activeIconColor: Colors.white,
-                onTap: () {},
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 10,
+                ),
+                child: IconAssetButton(
+                  iconAsset: habit.iconString,
+                  inactiveBackgroundColor: Colors.white.withOpacity(.25),
+                  inactiveIconColor: Colors.white,
+                  activeIconColor: Colors.white,
+                  onTap: () {},
+                ),
               ),
-            )
-          ]),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 18),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            habit.title,
+                            style: Theme.of(context).textTheme.headline3,
+                          ),
+                          Text(
+                            habit.startTime,
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      habit.status.getString(),
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
