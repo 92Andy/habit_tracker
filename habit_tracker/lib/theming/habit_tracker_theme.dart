@@ -23,9 +23,18 @@ class HabitTrackerTheme {
         fontSize: 18.sp,
         fontWeight: FontWeight.bold,
       ),
+      headline3: TextStyle(
+        color: colorThemeLight().surface,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
+      ),
       bodyText1: TextStyle(
         color: colorThemeLight().onSurface.withOpacity(0.4),
         fontSize: 15.sp,
+      ),
+      bodyText2: TextStyle(
+        color: colorThemeLight().surface.withOpacity(.5),
+        fontSize: 13.sp,
       ),
       button: TextStyle(
         color: colorThemeLight().onPrimary,
