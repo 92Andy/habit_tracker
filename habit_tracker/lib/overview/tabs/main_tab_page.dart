@@ -277,6 +277,7 @@ class _TodayHabitCardState extends State<_TodayHabitCard> {
                   inactiveBackgroundColor: Colors.white.withOpacity(.25),
                   inactiveIconColor: Colors.white,
                   activeIconColor: Colors.white,
+                  activateDoneAnimation: true,
                   onTap: () {
                     setState(() {
                       _isTapped = !_isTapped;
