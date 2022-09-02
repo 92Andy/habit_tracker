@@ -14,10 +14,10 @@ class HabitTrackerAppBar extends StatelessWidget
   final String title;
   final VoidCallback? onBackTapped;
 
-  final double height = 15.h;
+  final double _height = 15.h;
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(_height);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,14 @@ class HabitTrackerAppBar extends StatelessWidget
       painter: _AppBarCustomPainter(
         size: Size(
           100.w,
-          100.h - height,
+          100.h - _height,
         ),
       ),
       child: SizedBox(
-        height: height,
+        height: _height,
         child: Padding(
           padding: EdgeInsets.only(
-            top: height / 4,
+            top: _height / 4,
             left: 20,
             right: 20,
           ),

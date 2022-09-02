@@ -85,7 +85,7 @@ class _AddHabitView extends StatefulWidget {
 }
 
 class _AddHabitViewState extends State<_AddHabitView> {
-  TextEditingController habitTitleController = TextEditingController();
+  final TextEditingController _habitTitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ class _AddHabitViewState extends State<_AddHabitView> {
                 horizontal: 15,
               ),
               child: TextField(
-                controller: habitTitleController,
+                controller: _habitTitleController,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
                   border: InputBorder.none,

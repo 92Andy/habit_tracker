@@ -12,25 +12,25 @@ class PageNavigationController extends StatefulWidget {
 }
 
 class _PageNavigationControllerState extends State<PageNavigationController> {
-  late PageController controller;
+  late PageController _controller;
 
   @override
   void initState() {
-    controller = PageController(
+    _controller = PageController(
       initialPage: 0,
     );
     super.initState();
   }
 
   void moveToNextPage() {
-    controller.nextPage(
+    _controller.nextPage(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
   }
 
   void navBack() {
-    controller.previousPage(
+    _controller.previousPage(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
@@ -41,7 +41,7 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
     return PageView(
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
-      controller: controller,
+      controller: _controller,
       children: [
         StartPage(getStartedNavCallback: moveToNextPage),
         OverviewPage(navToAddHabitPage: moveToNextPage),
