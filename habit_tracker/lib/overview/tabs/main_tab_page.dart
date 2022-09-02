@@ -243,12 +243,12 @@ class _TodayHabitCard extends StatefulWidget {
 }
 
 class _TodayHabitCardState extends State<_TodayHabitCard> {
-  bool isTapped = false;
-  Color get backGroundColor => isTapped
+  bool _isTapped = false;
+  Color get backGroundColor => _isTapped
       ? HabitTrackerColors.azureBlue.withOpacity(.3)
       : Colors.white.withOpacity(.1);
   Color get borderColor =>
-      isTapped ? Colors.white.withOpacity(.3) : Colors.white.withOpacity(.5);
+      _isTapped ? Colors.white.withOpacity(.3) : Colors.white.withOpacity(.5);
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +279,7 @@ class _TodayHabitCardState extends State<_TodayHabitCard> {
                   activeIconColor: Colors.white,
                   onTap: () {
                     setState(() {
-                      isTapped = !isTapped;
+                      _isTapped = !_isTapped;
                     });
                   },
                 ),

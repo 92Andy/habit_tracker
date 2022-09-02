@@ -11,7 +11,7 @@ class GoalGradientSlider extends StatefulWidget {
 }
 
 class _GoalGradientSliderState extends State<GoalGradientSlider> {
-  double value = 14;
+  double _value = 14;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,14 @@ class _GoalGradientSliderState extends State<GoalGradientSlider> {
         showValueIndicator: ShowValueIndicator.never,
       ),
       child: Slider(
-        value: value,
+        value: _value,
         min: 0,
         max: 50,
         divisions: 50,
-        label: value.round().toString(),
+        label: _value.round().toString(),
         onChanged: (newValue) {
           setState(() {
-            value = newValue;
+            _value = newValue;
           });
         },
       ),
