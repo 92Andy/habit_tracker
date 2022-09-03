@@ -182,9 +182,10 @@ class _TodaysHabits extends StatelessWidget {
             color: Colors.white.withOpacity(0.05),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 8.h,
-              horizontal: 10.w,
+            padding: EdgeInsets.only(
+              top: 8.h,
+              left: 10.w,
+              right: 10.w,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
