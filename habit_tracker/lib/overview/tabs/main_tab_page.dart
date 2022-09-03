@@ -51,107 +51,11 @@ class MainTabPage extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 70),
             child: Column(
-              children: [
-                Row(
-                  children: <Widget>[
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: HabitTrackerColors.purpleLight,
-                      child: Image.asset(
-                        HabitTrackerIcon.batman,
-                        height: 35,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30, top: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Good Day',
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline1!
-                                .copyWith(fontSize: 16),
-                          ),
-                          Text(
-                            'Andy Eckhardt',
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline1!
-                                .copyWith(fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40.0),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              children: <Widget>[
-                                const Icon(Icons.bed_rounded),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  child: Text(
-                                    'Sleep',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline1!
-                                        .copyWith(fontSize: 16),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              children: <Widget>[
-                                const Icon(Icons.directions_walk_rounded),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  child: Text(
-                                    'Walking',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline1!
-                                        .copyWith(fontSize: 16),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              const Icon(Icons.directions_bike_outlined),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Text(
-                                  'Cycling',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline1!
-                                      .copyWith(fontSize: 16),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+              children: const [
+                _GreetingUser(),
+                _HabitProgress(),
               ],
             ),
           ),
@@ -161,6 +65,124 @@ class MainTabPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _GreetingUser extends StatelessWidget {
+  const _GreetingUser({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        CircleAvatar(
+          radius: 25,
+          backgroundColor: HabitTrackerColors.purple.withOpacity(.15),
+          child: Image.asset(
+            HabitTrackerIcon.batman,
+            height: 25,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Good Day 👋',
+                textAlign: TextAlign.left,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: HabitTrackerColors.cobaltBlue),
+              ),
+              Text(
+                'Andy Eckhardt',
+                textAlign: TextAlign.left,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1!
+                    .copyWith(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HabitProgress extends StatelessWidget {
+  const _HabitProgress({Key? key}) : super(key: key);
+
+  final Widget _spacer = const SizedBox(height: 25);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 35.h,
+      child: Row(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _ProgressEntry(
+                iconData: Icons.bed_rounded,
+                iconColor: HabitTrackerColors.azureBlue,
+                name: 'Sleep',
+              ),
+              _spacer,
+              _ProgressEntry(
+                iconData: Icons.directions_walk_outlined,
+                iconColor: HabitTrackerColors.purple,
+                name: 'Walking',
+              ),
+              _spacer,
+              _ProgressEntry(
+                iconData: Icons.directions_bike_outlined,
+                iconColor: HabitTrackerColors.olympicBlue,
+                name: 'Cycling',
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProgressEntry extends StatelessWidget {
+  const _ProgressEntry({
+    Key? key,
+    required this.iconData,
+    required this.iconColor,
+    required this.name,
+  }) : super(key: key);
+
+  final IconData iconData;
+  final Color iconColor;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(
+          iconData,
+          color: iconColor,
+          size: 3.h,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Text(
+          name,
+          style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 13),
+        )
+      ],
     );
   }
 }
