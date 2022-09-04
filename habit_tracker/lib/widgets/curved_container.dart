@@ -26,7 +26,7 @@ class CurvedContainer extends StatelessWidget {
       case ContainerCurveType.top:
         return _TopCurveClipper();
       case ContainerCurveType.bottom:
-        return _TopCurveClipper();
+        return _BottomCurveClipper();
     }
   }
 
@@ -43,6 +43,57 @@ class CurvedContainer extends StatelessWidget {
       ),
     );
   }
+}
+
+class _BottomCurveClipper extends CustomClipper<Path> {
+  final double leftRightEdgeYHeight = 40;
+
+  Offset leftCurvePoint(Size size) =>
+      Offset(size.width * .375, size.height - leftRightEdgeYHeight + 5);
+  Offset leftEndPoint(Size size) =>
+      Offset(size.width * .425, size.height - leftRightEdgeYHeight + 20);
+
+  Offset middleCurvePoint(Size size) => Offset(size.width * .5, size.height);
+  Offset middleEndPoint(Size size) =>
+      Offset(size.width * .575, size.height - leftRightEdgeYHeight + 20);
+
+  Offset rightCurvePoint(Size size) =>
+      Offset(size.width * .625, size.height - leftRightEdgeYHeight + 5);
+  Offset rightEndPoint(Size size) =>
+      Offset(size.width * .75, size.height - leftRightEdgeYHeight + 5);
+
+  @override
+  Path getClip(Size size) {
+    Path path = Path()
+      ..lineTo(0, size.height - leftRightEdgeYHeight) // p1
+      ..lineTo(size.width * 0.25, size.height - leftRightEdgeYHeight + 5)
+      ..quadraticBezierTo(
+        leftCurvePoint(size).dx,
+        leftCurvePoint(size).dy,
+        leftEndPoint(size).dx,
+        leftEndPoint(size).dy,
+      )
+      ..quadraticBezierTo(
+        middleCurvePoint(size).dx,
+        middleCurvePoint(size).dy,
+        middleEndPoint(size).dx,
+        middleEndPoint(size).dy,
+      )
+      ..quadraticBezierTo(
+        rightCurvePoint(size).dx,
+        rightCurvePoint(size).dy,
+        rightEndPoint(size).dx,
+        rightEndPoint(size).dy,
+      )
+      ..lineTo(size.width, size.height - leftRightEdgeYHeight) // p2
+      ..lineTo(size.width, 0)
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
 class _TopCurveClipper extends CustomClipper<Path> {

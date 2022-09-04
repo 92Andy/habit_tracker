@@ -87,6 +87,15 @@ class _AddHabitView extends StatefulWidget {
 class _AddHabitViewState extends State<_AddHabitView> {
   final TextEditingController _habitTitleController = TextEditingController();
 
+  final Widget smallSpacer = const SizedBox(height: 10);
+  final Widget middleSpacer = const SizedBox(height: 50);
+
+  @override
+  void dispose() {
+    _habitTitleController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -97,7 +106,7 @@ class _AddHabitViewState extends State<_AddHabitView> {
             'Habit title',
             style: Theme.of(context).textTheme.headline2,
           ),
-          const _SmallSpacer(),
+          smallSpacer,
           _WhiteRoundedContainer(
             height: 60,
             child: Padding(
@@ -116,12 +125,12 @@ class _AddHabitViewState extends State<_AddHabitView> {
               ),
             ),
           ),
-          const _MiddleSpacer(),
+          middleSpacer,
           Text(
             'Choose an Activity',
             style: Theme.of(context).textTheme.headline2,
           ),
-          const _SmallSpacer(),
+          smallSpacer,
           _WhiteRoundedContainer(
             height: 330,
             child: Padding(
@@ -147,7 +156,7 @@ class _AddHabitViewState extends State<_AddHabitView> {
                       ),
                     ),
                   ),
-                  const _MiddleSpacer(),
+                  middleSpacer,
                   const Center(
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -158,31 +167,13 @@ class _AddHabitViewState extends State<_AddHabitView> {
               ),
             ),
           ),
-          const _MiddleSpacer(),
+          middleSpacer,
           const Center(
             child: StyledButton(title: 'Add Habit'),
           ),
         ],
       ),
     );
-  }
-}
-
-class _SmallSpacer extends StatelessWidget {
-  const _SmallSpacer({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(height: 10);
-  }
-}
-
-class _MiddleSpacer extends StatelessWidget {
-  const _MiddleSpacer({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(height: 50);
   }
 }
 
