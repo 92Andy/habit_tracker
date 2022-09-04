@@ -34,8 +34,8 @@ LinearGradient get styledFullGradient => LinearGradient(
       stops: const [
         0.1,
         0.3,
-        0.5,
-        0.7,
+        0.65,
+        0.8,
         0.9,
       ],
       begin: Alignment.topLeft,
