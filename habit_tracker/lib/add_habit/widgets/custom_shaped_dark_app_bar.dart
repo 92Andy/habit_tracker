@@ -34,7 +34,7 @@ class HabitTrackerAppBar extends StatelessWidget
             HabitTrackerColors.purple
           ],
           stops: const [
-            0.1,
+            0.05,
             0.3,
             0.6,
           ],
