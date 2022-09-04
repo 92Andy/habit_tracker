@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
+import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HabitTrackerAppBar extends StatelessWidget
@@ -21,21 +24,29 @@ class HabitTrackerAppBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _AppBarCustomPainter(
-        size: Size(
-          100.w,
-          100.h - _height,
+    return CurvedContainer(
+      height: 18.h,
+      boxDecoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            HabitTrackerColors.azureBlue.withOpacity(0.85),
+            HabitTrackerColors.olympicBlue,
+            HabitTrackerColors.purple
+          ],
+          stops: const [
+            0.1,
+            0.3,
+            0.6,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
-      child: SizedBox(
-        height: _height,
+      curveType: ContainerCurveType.bottom,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Padding(
-          padding: EdgeInsets.only(
-            top: _height / 4,
-            left: 20,
-            right: 20,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Stack(
             children: [
               Align(
@@ -76,57 +87,5 @@ class HabitTrackerAppBar extends StatelessWidget
         ),
       ),
     );
-  }
-}
-
-class _AppBarCustomPainter extends CustomPainter {
-  const _AppBarCustomPainter({
-    required this.size,
-  });
-
-  final Size size;
-  //Todo: size as parameter
-  @override
-  void paint(Canvas canvas, Size size) {
-    size = this.size;
-    Paint paint0 = Paint()
-      ..style = PaintingStyle.fill
-      ..maskFilter = const MaskFilter.blur(
-        BlurStyle.solid,
-        5,
-      );
-    paint0.shader = darkGradientShader;
-
-    Path path0 = Path();
-    path0.moveTo(0, size.height * 0.1670379);
-    path0.quadraticBezierTo(size.width * 0.3224600, size.height * 0.1737305,
-        size.width * 0.3449800, size.height * 0.1756682);
-    path0.cubicTo(
-        size.width * 0.4464400,
-        size.height * 0.1861136,
-        size.width * 0.4269400,
-        size.height * 0.2037862,
-        size.width * 0.5001600,
-        size.height * 0.2069376);
-    path0.cubicTo(
-        size.width * 0.5754200,
-        size.height * 0.2041091,
-        size.width * 0.5527000,
-        size.height * 0.1875390,
-        size.width * 0.6524400,
-        size.height * 0.1783519);
-    path0.quadraticBezierTo(size.width * 0.6743400, size.height * 0.1756125,
-        size.width, size.height * 0.1661693);
-    path0.lineTo(size.width, 0);
-    path0.lineTo(0, 0);
-    path0.lineTo(0, size.height * 0.1670379);
-    path0.close();
-
-    canvas.drawPath(path0, paint0);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }
