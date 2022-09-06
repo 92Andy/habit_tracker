@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:circular_progress_bar_group1/circular_progress_bar_group1.dart';
+import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 
 void main() {
   test('adds one to input values', () {

@@ -1,4 +1,4 @@
-library circular_progress_bar_group1;
+library circular_progress_bar_group;
 
 /// A Calculator.
 class Calculator {
