@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/widgets/icon_asset_button.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
@@ -123,6 +124,7 @@ class _HabitProgress extends StatelessWidget {
     return SizedBox(
       height: 35.h,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -147,6 +149,7 @@ class _HabitProgress extends StatelessWidget {
               ),
             ],
           ),
+          const FullCircularProgressBar(),
         ],
       ),
     );
