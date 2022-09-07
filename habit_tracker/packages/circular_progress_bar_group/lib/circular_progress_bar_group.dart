@@ -1,7 +1,3 @@
 library circular_progress_bar_group;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'progress_bars/full_circular_progress_bar.dart';
