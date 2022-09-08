@@ -25,6 +25,8 @@ extension FullCircularStartPointRadian on FullCircularStartPoint {
   }
 }
 
+const progressBarDefaultColor = Color(0xffFF9671);
+
 class FullCircularProgressBar extends StatefulWidget {
   const FullCircularProgressBar({
     Key? key,
@@ -32,12 +34,20 @@ class FullCircularProgressBar extends StatefulWidget {
     this.thickness = 20,
     this.value = 20,
     this.startPoint = FullCircularStartPoint.bottom,
+    this.arcBackgroundOpacity = 0.3,
+    this.color = progressBarDefaultColor,
+    this.gradient,
+    this.progressIndicatorStyle,
   }) : super(key: key);
 
   final double diameter;
   final double thickness;
   final double value;
   final FullCircularStartPoint startPoint;
+  final double arcBackgroundOpacity;
+  final Color color;
+  final ui.Gradient? gradient;
+  final TextStyle? progressIndicatorStyle;
 
   @override
   State<FullCircularProgressBar> createState() =>
@@ -52,17 +62,21 @@ class _FullCircularProgressBarState extends State<FullCircularProgressBar> {
         value: widget.value / 100,
         thickness: widget.thickness,
         startPoint: widget.startPoint,
+        arcBackgroundOpacity: widget.arcBackgroundOpacity,
+        color: widget.color,
+        gradient: widget.gradient,
       ),
       child: SizedBox.square(
         dimension: widget.diameter,
         child: Center(
           child: Text(
             '${(widget.value).floor()}%',
-            style: const TextStyle(
-              color: Color(0xffFF9671),
-              fontSize: 35,
-              fontWeight: FontWeight.bold,
-            ),
+            style: widget.progressIndicatorStyle ??
+                const TextStyle(
+                  color: progressBarDefaultColor,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ),
       ),
@@ -75,11 +89,17 @@ class _FullCircularProgressBarPainter extends CustomPainter {
     required this.value,
     required this.thickness,
     required this.startPoint,
+    required this.color,
+    required this.arcBackgroundOpacity,
+    this.gradient,
   });
 
   final double value;
   final double thickness;
   final FullCircularStartPoint startPoint;
+  final double arcBackgroundOpacity;
+  final Color color;
+  final ui.Gradient? gradient;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -90,15 +110,13 @@ class _FullCircularProgressBarPainter extends CustomPainter {
     final paint = Paint()
       ..strokeWidth = thickness
       ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..shader = ui.Gradient.linear(
-        rect.topLeft,
-        rect.topRight,
-        [
-          const Color(0xffFF6F91),
-          const Color(0xffFF9671),
-        ],
-      );
+      ..style = PaintingStyle.stroke;
+
+    if (gradient != null) {
+      paint.shader = gradient;
+    } else {
+      paint.color = color;
+    }
 
     canvas.drawArc(
       rect.deflate(thickness / 2),
@@ -108,7 +126,8 @@ class _FullCircularProgressBarPainter extends CustomPainter {
       paint,
     );
 
-    canvas.saveLayer(rect, Paint()..color = Colors.white38);
+    canvas.saveLayer(
+        rect, Paint()..color = Colors.white.withOpacity(arcBackgroundOpacity));
 
     canvas.drawArc(
       rect.deflate(thickness / 2),
