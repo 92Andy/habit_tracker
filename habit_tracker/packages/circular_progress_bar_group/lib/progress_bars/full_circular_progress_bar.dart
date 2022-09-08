@@ -31,7 +31,7 @@ class FullCircularProgressBar extends StatefulWidget {
   const FullCircularProgressBar({
     Key? key,
     this.diameter = 200,
-    this.thickness = 20,
+    this.arcThickness = 20,
     this.value = 20,
     this.startPoint = FullCircularStartPoint.bottom,
     this.arcBackgroundOpacity = 0.3,
@@ -41,7 +41,7 @@ class FullCircularProgressBar extends StatefulWidget {
   }) : super(key: key);
 
   final double diameter;
-  final double thickness;
+  final double arcThickness;
   final double value;
   final FullCircularStartPoint startPoint;
   final double arcBackgroundOpacity;
@@ -60,7 +60,7 @@ class _FullCircularProgressBarState extends State<FullCircularProgressBar> {
     return CustomPaint(
       painter: _FullCircularProgressBarPainter(
         value: widget.value / 100,
-        thickness: widget.thickness,
+        thickness: widget.arcThickness,
         startPoint: widget.startPoint,
         arcBackgroundOpacity: widget.arcBackgroundOpacity,
         color: widget.color,
