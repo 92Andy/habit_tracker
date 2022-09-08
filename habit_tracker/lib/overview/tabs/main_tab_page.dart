@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +149,18 @@ class _HabitProgress extends StatelessWidget {
               ),
             ],
           ),
-          const FullCircularProgressBar(),
+          FullCircularProgressBar(
+            startPoint: FullCircularStartPoint.top,
+            value: 45,
+            gradient: ui.Gradient.linear(
+              const Offset(0, 0),
+              const Offset(200, 0),
+              [
+                const Color(0xffFF6F91),
+                const Color(0xffFF9671),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -201,7 +212,7 @@ class _TodaysHabits extends StatelessWidget {
         gradient: styledFullGradient,
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        filter: ui.ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.05),
@@ -280,7 +291,7 @@ class _TodayHabitCardState extends State<_TodayHabitCard> {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        filter: ui.ImageFilter.blur(sigmaX: 3, sigmaY: 3),
         child: Container(
           height: 100,
           decoration: BoxDecoration(
