@@ -25,7 +25,7 @@ extension FullCircularStartPointRadian on FullCircularStartPoint {
   }
 }
 
-const progressBarDefaultColor = Color(0xffFF9671);
+const fullProgressBarDefaultColor = Color(0xffFF9671);
 
 class FullCircularProgressBar extends StatefulWidget {
   const FullCircularProgressBar({
@@ -35,7 +35,7 @@ class FullCircularProgressBar extends StatefulWidget {
     this.value = 20,
     this.startPoint = FullCircularStartPoint.bottom,
     this.arcBackgroundOpacity = 0.3,
-    this.color = progressBarDefaultColor,
+    this.color = fullProgressBarDefaultColor,
     this.gradient,
     this.progressIndicatorStyle,
   }) : super(key: key);
@@ -73,7 +73,7 @@ class _FullCircularProgressBarState extends State<FullCircularProgressBar> {
             '${(widget.value).floor()}%',
             style: widget.progressIndicatorStyle ??
                 const TextStyle(
-                  color: progressBarDefaultColor,
+                  color: fullProgressBarDefaultColor,
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
