@@ -149,7 +149,8 @@ class _HabitProgress extends StatelessWidget {
               ),
             ],
           ),
-          FullCircularProgressBar(
+          const TwiceSplitedProgressBar(),
+          /*FullCircularProgressBar(
             startPoint: FullCircularStartPoint.top,
             value: 45,
             gradient: ui.Gradient.linear(
@@ -160,7 +161,7 @@ class _HabitProgress extends StatelessWidget {
                 const Color(0xffFF9671),
               ],
             ),
-          ),
+          ),*/
         ],
       ),
     );
