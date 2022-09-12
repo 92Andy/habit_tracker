@@ -1,30 +1,16 @@
 import 'dart:math';
+import 'package:circular_progress_bar_group/progress_bars/split_bar_values.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-class SplitBarValues {
-  const SplitBarValues({
-    this.value = 50,
-    this.color = firstSplitBarDefaultColor,
-    this.arcBackgroundOpacity = 0.3,
-  });
-
-  final double value;
-  final Color color;
-  final double arcBackgroundOpacity;
-}
-
-const firstSplitBarDefaultColor = Color(0xffFF9671);
-const secondSplitBarDefaultColor = Color(0xffFF6F91);
 
 class TwiceSplitedProgressBar extends StatefulWidget {
   const TwiceSplitedProgressBar({
     Key? key,
     this.diameter = 180,
     this.arcThickness = 20,
-    this.firstSplitValues = const SplitBarValues(value: 10),
+    this.firstSplitValues = const SplitBarValues(value: 85),
     this.secondSplitValues =
-        const SplitBarValues(value: 30, color: secondSplitBarDefaultColor),
+        const SplitBarValues(value: 93, color: secondSplitBarDefaultColor),
     this.progressIndicatorStyle,
   }) : super(key: key);
 
