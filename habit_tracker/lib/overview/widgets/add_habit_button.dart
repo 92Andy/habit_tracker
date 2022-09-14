@@ -41,6 +41,7 @@ class AddHabitButton extends StatelessWidget {
               color: whiteWithSmallOpacity,
             ),
             child: MaterialButton(
+              padding: EdgeInsets.zero,
               onPressed: navToAddHabitPage,
               shape: RoundedRectangleBorder(borderRadius: circularBorderRadius),
               splashColor: whiteWithSmallOpacity,
