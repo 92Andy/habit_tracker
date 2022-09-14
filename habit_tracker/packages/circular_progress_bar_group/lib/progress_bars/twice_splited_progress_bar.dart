@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:circular_progress_bar_group/progress_bars/split_bar_values.dart';
+import 'package:circular_progress_bar_group/progress_bars/models/split_bar_values.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
