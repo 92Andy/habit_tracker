@@ -1,4 +1,5 @@
 import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +150,21 @@ class _HabitProgress extends StatelessWidget {
               ),
             ],
           ),
-          const TwiceSplitedProgressBar(),
+          TripleSplitedProgressBar(
+            firstSplitValues: SplitBarValues(
+              value: 70,
+              color: HabitTrackerColors.olympicBlue,
+            ),
+            secondSplitValues: SplitBarValues(
+              value: 60,
+              color: HabitTrackerColors.purple,
+            ),
+            thirdSplitValues: SplitBarValues(
+              value: 80,
+              color: HabitTrackerColors.azureBlue,
+            ),
+          ),
+          //const TwiceSplitedProgressBar(),
           /*FullCircularProgressBar(
             startPoint: FullCircularStartPoint.top,
             value: 45,
