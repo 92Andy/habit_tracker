@@ -90,8 +90,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintFirstSplit(Canvas canvas, Size size) {
-    const sweepAngle = 2 * pi * (1 / 3) - .4;
-    const startAngle = 5 * pi / 6 + .2;
+    const sweepAngle = pi - .4;
+    const startAngle = pi / 2 + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -126,8 +126,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintSecondSplit(Canvas canvas, Size size) {
-    const sweepAngle = 2 * pi * (1 / 3) - .4;
-    const startAngle = 3 * pi / 2 + .2;
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = 2 * pi + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -162,8 +162,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintThirdSplit(Canvas canvas, Size size) {
-    const sweepAngle = 2 * pi * (1 / 3) - .4;
-    const startAngle = 1 * pi / 6 + .2;
+    const sweepAngle = 2 * pi - .4;
+    const startAngle = 3 * pi / 2 + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -198,8 +198,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintForthSplit(Canvas canvas, Size size) {
-    const sweepAngle = 2 * pi * (1 / 3) - .4;
-    const startAngle = 1 * pi / 6 + .2;
+    const sweepAngle = 3 * pi / 2 - .4;
+    const startAngle = pi + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
