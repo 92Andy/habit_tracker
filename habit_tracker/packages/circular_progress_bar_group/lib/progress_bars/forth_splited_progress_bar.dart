@@ -90,8 +90,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintFirstSplit(Canvas canvas, Size size) {
-    const sweepAngle = pi - .4;
-    const startAngle = pi / 2 + .2;
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = pi + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -127,7 +127,7 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
 
   void _paintSecondSplit(Canvas canvas, Size size) {
     const sweepAngle = pi / 2 - .4;
-    const startAngle = 2 * pi + .2;
+    const startAngle = 3 * pi / 2 + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -162,8 +162,8 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintThirdSplit(Canvas canvas, Size size) {
-    const sweepAngle = 2 * pi - .4;
-    const startAngle = 3 * pi / 2 + .2;
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = 2 * pi + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
@@ -198,20 +198,20 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   }
 
   void _paintForthSplit(Canvas canvas, Size size) {
-    const sweepAngle = 3 * pi / 2 - .4;
-    const startAngle = pi + .2;
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = pi / 2 + .2;
     final rect = Offset.zero & size;
 
     final paint = Paint()
       ..strokeWidth = thickness
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..color = thirdSplitValues.color;
+      ..color = forthSplitValues.color;
 
     canvas.drawArc(
       rect.deflate(thickness / 2),
       startAngle,
-      max(sweepAngle * thirdSplitValues.value / 100, precisionErrorTolerance),
+      max(sweepAngle * forthSplitValues.value / 100, precisionErrorTolerance),
       false,
       paint,
     );
@@ -220,7 +220,7 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
         rect,
         Paint()
           ..color =
-              Colors.white.withOpacity(thirdSplitValues.arcBackgroundOpacity));
+              Colors.white.withOpacity(forthSplitValues.arcBackgroundOpacity));
 
     canvas.drawArc(
       rect.deflate(thickness / 2),
