@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:circular_progress_bar_group/progress_bars/helper/progress_bar_painter.dart';
 import 'package:circular_progress_bar_group/progress_bars/models/split_bar_values.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -72,73 +73,37 @@ class _TwiceSplitedProgressBarPainter extends CustomPainter {
   void _paintFirstSplit(Canvas canvas, Size size) {
     const sweepAngle = 2.4 / 3 * pi;
     const startAngle = 1.8 / 3 * pi;
-    final rect = Offset.zero & size;
 
-    final paint = Paint()
-      ..strokeWidth = thickness
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..color = firstSplitValues.color;
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      max(sweepAngle * firstSplitValues.value / 100, precisionErrorTolerance),
-      false,
-      paint,
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: firstSplitValues.value,
+      color: firstSplitValues.color,
+      backgroundOpacity: firstSplitValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
     );
 
-    canvas.saveLayer(
-        rect,
-        Paint()
-          ..color =
-              Colors.white.withOpacity(firstSplitValues.arcBackgroundOpacity));
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      sweepAngle,
-      false,
-      paint,
-    );
-
-    canvas.restore();
+    ProgressBarPainter.paint(paintInfo);
   }
 
   void _paintSecondSplit(Canvas canvas, Size size) {
     const sweepAngle = 2.4 / 3 * pi;
     const startAngle = 4.8 / 3 * pi;
-    final rect = Offset.zero & size;
 
-    final paint = Paint()
-      ..strokeWidth = thickness
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..color = secondSplitValues.color;
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      max(sweepAngle * secondSplitValues.value / 100, precisionErrorTolerance),
-      false,
-      paint,
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: secondSplitValues.value,
+      color: secondSplitValues.color,
+      backgroundOpacity: secondSplitValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
     );
 
-    canvas.saveLayer(
-        rect,
-        Paint()
-          ..color =
-              Colors.white.withOpacity(firstSplitValues.arcBackgroundOpacity));
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      sweepAngle,
-      false,
-      paint,
-    );
-
-    canvas.restore();
+    ProgressBarPainter.paint(paintInfo);
   }
 
   @override
