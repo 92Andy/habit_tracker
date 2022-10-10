@@ -8,12 +8,12 @@ class TripleSplitedProgressBar extends StatefulWidget {
     Key? key,
     this.diameter = 180,
     this.arcThickness = 12,
-    this.firstSplitValues = const SplitBarValues(value: 50),
-    this.secondSplitValues = const SplitBarValues(
+    this.firstSplitValues = const BarValues(value: 50),
+    this.secondSplitValues = const BarValues(
       value: 50,
       color: secondSplitBarDefaultColor,
     ),
-    this.thirdSplitValues = const SplitBarValues(
+    this.thirdSplitValues = const BarValues(
       value: 50,
       color: Colors.green,
     ),
@@ -23,9 +23,9 @@ class TripleSplitedProgressBar extends StatefulWidget {
   final double diameter;
   final double arcThickness;
   final TextStyle? progressIndicatorStyle;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
-  final SplitBarValues thirdSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
+  final BarValues thirdSplitValues;
 
   @override
   State<TripleSplitedProgressBar> createState() =>
@@ -69,9 +69,9 @@ class _TripleSplitedProgressBarPainter extends CustomPainter {
   });
 
   final double thickness;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
-  final SplitBarValues thirdSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
+  final BarValues thirdSplitValues;
 
   @override
   void paint(Canvas canvas, Size size) {
