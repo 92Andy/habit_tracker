@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:circular_progress_bar_group/progress_bars/helper/progress_bar_painter.dart';
 import 'package:circular_progress_bar_group/progress_bars/models/split_bar_values.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class TwiceSplitedProgressBar extends StatefulWidget {
@@ -9,17 +8,17 @@ class TwiceSplitedProgressBar extends StatefulWidget {
     Key? key,
     this.diameter = 180,
     this.arcThickness = 20,
-    this.firstSplitValues = const SplitBarValues(value: 85),
+    this.firstSplitValues = const BarValues(value: 85),
     this.secondSplitValues =
-        const SplitBarValues(value: 93, color: secondSplitBarDefaultColor),
+        const BarValues(value: 93, color: secondSplitBarDefaultColor),
     this.progressIndicatorStyle,
   }) : super(key: key);
 
   final double diameter;
   final double arcThickness;
   final TextStyle? progressIndicatorStyle;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
 
   @override
   State<TwiceSplitedProgressBar> createState() =>
@@ -61,8 +60,8 @@ class _TwiceSplitedProgressBarPainter extends CustomPainter {
   });
 
   final double thickness;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
 
   @override
   void paint(Canvas canvas, Size size) {

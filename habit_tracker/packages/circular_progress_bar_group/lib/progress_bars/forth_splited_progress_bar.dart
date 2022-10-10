@@ -8,16 +8,16 @@ class ForthSplitedProgressBar extends StatefulWidget {
     Key? key,
     this.diameter = 180,
     this.arcThickness = 12,
-    this.firstSplitValues = const SplitBarValues(value: 50),
-    this.secondSplitValues = const SplitBarValues(
-      value: 20,
+    this.firstSplitValues = const BarValues(value: 50),
+    this.secondSplitValues = const BarValues(
+      value: 70,
       color: secondSplitBarDefaultColor,
     ),
-    this.thirdSplitValues = const SplitBarValues(
+    this.thirdSplitValues = const BarValues(
       value: 90,
       color: Colors.green,
     ),
-    this.forthSplitValues = const SplitBarValues(
+    this.forthSplitValues = const BarValues(
       value: 30,
       color: Colors.blue,
     ),
@@ -27,10 +27,10 @@ class ForthSplitedProgressBar extends StatefulWidget {
   final double diameter;
   final double arcThickness;
   final TextStyle? progressIndicatorStyle;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
-  final SplitBarValues thirdSplitValues;
-  final SplitBarValues forthSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
+  final BarValues thirdSplitValues;
+  final BarValues forthSplitValues;
 
   @override
   State<ForthSplitedProgressBar> createState() =>
@@ -76,10 +76,10 @@ class _ForthSplitedProgressBarPainter extends CustomPainter {
   });
 
   final double thickness;
-  final SplitBarValues firstSplitValues;
-  final SplitBarValues secondSplitValues;
-  final SplitBarValues thirdSplitValues;
-  final SplitBarValues forthSplitValues;
+  final BarValues firstSplitValues;
+  final BarValues secondSplitValues;
+  final BarValues thirdSplitValues;
+  final BarValues forthSplitValues;
 
   @override
   void paint(Canvas canvas, Size size) {
