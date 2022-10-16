@@ -1,4 +1,7 @@
-import 'package:circular_progress_bar_group/progress_bars/models/split_bar_values.dart';
+import 'dart:math';
+
+import 'package:circular_progress_bar_group/progress_bars/helper/progress_bar_painter.dart';
+import 'package:circular_progress_bar_group/progress_bars/models/bar_values.dart';
 import 'package:flutter/material.dart';
 
 const double _kArcThickness = 20;
@@ -75,14 +78,21 @@ class CircularProgressBarGroup extends StatelessWidget {
     }
   }
 
+  CustomPainter getCustomerPainter() {
+    switch (_type) {
+      case _GroupBarTyp.twoBars:
+        return _TwoProgressBarPainter(
+          thickness: arcThickness,
+          firstBarValues: firstBarValues,
+          secondBarValues: secondBarValues,
+        );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _TwiceSplitedProgressBarPainter(
-        firstSplitValues: widget.firstSplitValues,
-        secondSplitValues: widget.secondSplitValues,
-        thickness: widget.arcThickness,
-      ),
+      painter: getCustomerPainter(),
       child: SizedBox.square(
         dimension: diameter,
         child: Center(
@@ -98,4 +108,63 @@ class CircularProgressBarGroup extends StatelessWidget {
       ),
     );
   }
+}
+
+class _TwoProgressBarPainter extends CustomPainter {
+  const _TwoProgressBarPainter({
+    required this.thickness,
+    required this.firstBarValues,
+    required this.secondBarValues,
+  });
+
+  final double thickness;
+  final BarValues firstBarValues;
+  final BarValues secondBarValues;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    _paintFirstSplit(canvas, size);
+    _paintSecondSplit(canvas, size);
+  }
+
+  void _paintFirstSplit(Canvas canvas, Size size) {
+    const sweepAngle = 2.4 / 3 * pi;
+    const startAngle = 1.8 / 3 * pi;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: firstBarValues.value,
+      color: firstBarValues.color,
+      backgroundOpacity: firstBarValues.arcBackgroundOpacity!,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  void _paintSecondSplit(Canvas canvas, Size size) {
+    const sweepAngle = 2.4 / 3 * pi;
+    const startAngle = 4.8 / 3 * pi;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: secondBarValues.value,
+      color: secondBarValues.color,
+      backgroundOpacity: secondBarValues.arcBackgroundOpacity!,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  @override
+  bool shouldRepaint(_TwoProgressBarPainter oldDelegate) =>
+      firstBarValues.value != oldDelegate.firstBarValues.value ||
+      secondBarValues.value != oldDelegate.secondBarValues.value;
 }
