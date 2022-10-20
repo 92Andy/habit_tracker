@@ -4,8 +4,13 @@ import 'package:circular_progress_bar_group/progress_bars/helper/progress_bar_pa
 import 'package:circular_progress_bar_group/progress_bars/models/bar_values.dart';
 import 'package:flutter/material.dart';
 
-const double _kArcThickness = 20;
-const double _kDiameter = 180;
+const double _defaultArcThickness = 20;
+const double _defaultDiameter = 180;
+const TextStyle _defaultTextStyle = TextStyle(
+  color: firstSplitBarDefaultColor,
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+);
 
 enum _GroupBarTyp {
   twoBars,
@@ -18,8 +23,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     Key? key,
     required this.firstBarValues,
     required this.secondBarValues,
-    this.diameter = _kDiameter,
-    this.arcThickness = _kArcThickness,
+    this.diameter = _defaultDiameter,
+    this.arcThickness = _defaultArcThickness,
+    this.indicatorTextStyle = _defaultTextStyle,
   })  : _type = _GroupBarTyp.twoBars,
         thirdBarValues = null,
         forthBarValues = null,
@@ -30,8 +36,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     required this.firstBarValues,
     required this.secondBarValues,
     required this.thirdBarValues,
-    this.diameter = _kDiameter,
-    this.arcThickness = _kArcThickness,
+    this.diameter = _defaultDiameter,
+    this.arcThickness = _defaultArcThickness,
+    this.indicatorTextStyle = _defaultTextStyle,
   })  : _type = _GroupBarTyp.threeBars,
         forthBarValues = null,
         assert(thirdBarValues != null),
@@ -43,8 +50,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     required this.secondBarValues,
     required this.thirdBarValues,
     required this.forthBarValues,
-    this.diameter = _kDiameter,
-    this.arcThickness = _kArcThickness,
+    this.diameter = _defaultDiameter,
+    this.arcThickness = _defaultArcThickness,
+    this.indicatorTextStyle = _defaultTextStyle,
   })  : _type = _GroupBarTyp.fourBars,
         assert(thirdBarValues != null),
         assert(forthBarValues != null),
@@ -57,6 +65,7 @@ class CircularProgressBarGroup extends StatelessWidget {
   final BarValues? thirdBarValues;
   final BarValues? forthBarValues;
   final _GroupBarTyp _type;
+  final TextStyle indicatorTextStyle;
 
   int _getTotalPercentage() {
     switch (_type) {
@@ -78,7 +87,7 @@ class CircularProgressBarGroup extends StatelessWidget {
     }
   }
 
-  CustomPainter getCustomerPainter() {
+  CustomPainter getProgressBarPainter() {
     switch (_type) {
       case _GroupBarTyp.twoBars:
         return _TwoProgressBarPainter(
@@ -93,21 +102,29 @@ class CircularProgressBarGroup extends StatelessWidget {
           secondBarValues: secondBarValues,
           thirdBarValues: thirdBarValues!,
         );
+      case _GroupBarTyp.fourBars:
+        return _FourProgressBarPainter(
+          thickness: arcThickness,
+          firstBarValues: firstBarValues,
+          secondBarValues: secondBarValues,
+          thirdBarValues: thirdBarValues!,
+          forthBarValues: forthBarValues!,
+        );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: getCustomerPainter(),
+      painter: getProgressBarPainter(),
       child: SizedBox.square(
         dimension: diameter,
         child: Center(
           child: Text(
-            '$_getTotalPercentage()',
+            '${_getTotalPercentage().toString()} %',
             style: const TextStyle(
               color: firstSplitBarDefaultColor,
-              fontSize: 35,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -144,7 +161,7 @@ class _TwoProgressBarPainter extends CustomPainter {
       thickness: thickness,
       progressValue: firstBarValues.value,
       color: firstBarValues.color,
-      backgroundOpacity: firstBarValues.arcBackgroundOpacity!,
+      backgroundOpacity: firstBarValues.arcBackgroundOpacity,
       startAngle: startAngle,
       sweepAngle: sweepAngle,
     );
@@ -162,7 +179,7 @@ class _TwoProgressBarPainter extends CustomPainter {
       thickness: thickness,
       progressValue: secondBarValues.value,
       color: secondBarValues.color,
-      backgroundOpacity: secondBarValues.arcBackgroundOpacity!,
+      backgroundOpacity: secondBarValues.arcBackgroundOpacity,
       startAngle: startAngle,
       sweepAngle: sweepAngle,
     );
@@ -206,7 +223,7 @@ class _ThreeProgressBarPainter extends CustomPainter {
       thickness: thickness,
       progressValue: firstBarValues.value,
       color: firstBarValues.color,
-      backgroundOpacity: firstBarValues.arcBackgroundOpacity!,
+      backgroundOpacity: firstBarValues.arcBackgroundOpacity,
       startAngle: startAngle,
       sweepAngle: sweepAngle,
     );
@@ -224,7 +241,7 @@ class _ThreeProgressBarPainter extends CustomPainter {
       thickness: thickness,
       progressValue: secondBarValues.value,
       color: secondBarValues.color,
-      backgroundOpacity: secondBarValues.arcBackgroundOpacity!,
+      backgroundOpacity: secondBarValues.arcBackgroundOpacity,
       startAngle: startAngle,
       sweepAngle: sweepAngle,
     );
@@ -242,7 +259,7 @@ class _ThreeProgressBarPainter extends CustomPainter {
       thickness: thickness,
       progressValue: thirdBarValues.value,
       color: thirdBarValues.color,
-      backgroundOpacity: thirdBarValues.arcBackgroundOpacity!,
+      backgroundOpacity: thirdBarValues.arcBackgroundOpacity,
       startAngle: startAngle,
       sweepAngle: sweepAngle,
     );
@@ -255,4 +272,107 @@ class _ThreeProgressBarPainter extends CustomPainter {
       firstBarValues.value != oldDelegate.firstBarValues.value ||
       secondBarValues.value != oldDelegate.secondBarValues.value ||
       thirdBarValues.value != oldDelegate.thirdBarValues.value;
+}
+
+class _FourProgressBarPainter extends CustomPainter {
+  const _FourProgressBarPainter({
+    required this.thickness,
+    required this.firstBarValues,
+    required this.secondBarValues,
+    required this.thirdBarValues,
+    required this.forthBarValues,
+  });
+
+  final double thickness;
+  final BarValues firstBarValues;
+  final BarValues secondBarValues;
+  final BarValues thirdBarValues;
+  final BarValues forthBarValues;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    _paintFirstSplit(canvas, size);
+    _paintSecondSplit(canvas, size);
+    _paintThirdSplit(canvas, size);
+    _paintForthSplit(canvas, size);
+  }
+
+  void _paintFirstSplit(Canvas canvas, Size size) {
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = pi + .2;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: firstBarValues.value,
+      color: firstBarValues.color,
+      backgroundOpacity: firstBarValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  void _paintSecondSplit(Canvas canvas, Size size) {
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = 3 * pi / 2 + .2;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: secondBarValues.value,
+      color: secondBarValues.color,
+      backgroundOpacity: secondBarValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  void _paintThirdSplit(Canvas canvas, Size size) {
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = 2 * pi + .2;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: thirdBarValues.value,
+      color: thirdBarValues.color,
+      backgroundOpacity: thirdBarValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  void _paintForthSplit(Canvas canvas, Size size) {
+    const sweepAngle = pi / 2 - .4;
+    const startAngle = pi / 2 + .2;
+
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: forthBarValues.value,
+      color: forthBarValues.color,
+      backgroundOpacity: forthBarValues.arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
+    );
+
+    ProgressBarPainter.paint(paintInfo);
+  }
+
+  @override
+  bool shouldRepaint(_FourProgressBarPainter oldDelegate) =>
+      firstBarValues.value != oldDelegate.firstBarValues.value ||
+      secondBarValues.value != oldDelegate.secondBarValues.value ||
+      thirdBarValues.value != oldDelegate.thirdBarValues.value ||
+      forthBarValues.value != oldDelegate.forthBarValues.value;
 }
