@@ -9,7 +9,7 @@ class BarValues {
 
   final double value;
   final Color color;
-  final double? arcBackgroundOpacity;
+  final double arcBackgroundOpacity;
 }
 
 const firstSplitBarDefaultColor = Color(0xffFF9671);
