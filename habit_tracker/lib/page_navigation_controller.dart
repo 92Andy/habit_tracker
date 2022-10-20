@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/add_habit/add_habit_page.dart';
-import 'package:habit_tracker/overview/overview_page.dart';
-import 'package:habit_tracker/start/start_page.dart';
+import 'package:habit_tracker/pages/add_habit/add_habit_page.dart';
+import 'package:habit_tracker/pages/overview/overview_page.dart';
+import 'package:habit_tracker/pages/start/start_page.dart';
 
 class PageNavigationController extends StatefulWidget {
   const PageNavigationController({Key? key}) : super(key: key);

@@ -2,11 +2,11 @@ import 'dart:ui' as ui;
 
 import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/pages/overview/models/habit.dart';
 import 'package:habit_tracker/widgets/icon_asset_button.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
-import 'package:habit_tracker/overview/domain/habit.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

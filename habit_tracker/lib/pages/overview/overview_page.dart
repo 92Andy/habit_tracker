@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
-import 'package:habit_tracker/overview/tabs/main_tab_page.dart';
-import 'package:habit_tracker/overview/widgets/bottom_nav_bar.dart';
+import 'package:habit_tracker/pages/overview/tabs/main_tab_page.dart';
+import 'package:habit_tracker/pages/overview/widgets/bottom_nav_bar.dart';
 
 class OverviewPage extends StatelessWidget {
   const OverviewPage({
