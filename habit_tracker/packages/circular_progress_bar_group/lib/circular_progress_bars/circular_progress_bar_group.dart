@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:circular_progress_bar_group/progress_bars/helper/progress_bar_painter.dart';
-import 'package:circular_progress_bar_group/progress_bars/models/bar_values.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/helper/progress_bar_painter.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/models/bar_values.dart';
 import 'package:flutter/material.dart';
 
 const double _defaultArcThickness = 20;
@@ -11,6 +11,18 @@ const TextStyle _defaultTextStyle = TextStyle(
   fontSize: 30,
   fontWeight: FontWeight.bold,
 );
+
+typedef ProgressValueWidgetBuilder = Widget Function(int progressValue);
+
+ProgressValueWidgetBuilder _defaultProgressValueBuilder =
+    (progressValue) => Text(
+          '$progressValue %',
+          style: const TextStyle(
+            color: firstSplitBarDefaultColor,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        );
 
 enum _GroupBarTyp {
   twoBars,
@@ -120,14 +132,7 @@ class CircularProgressBarGroup extends StatelessWidget {
       child: SizedBox.square(
         dimension: diameter,
         child: Center(
-          child: Text(
-            '${_getTotalPercentage().toString()} %',
-            style: const TextStyle(
-              color: firstSplitBarDefaultColor,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: _defaultProgressValueBuilder(_getTotalPercentage()),
         ),
       ),
     );
