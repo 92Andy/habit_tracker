@@ -38,6 +38,7 @@ class CircularProgressBarGroup extends StatelessWidget {
     this.diameter = _defaultDiameter,
     this.arcThickness = _defaultArcThickness,
     this.indicatorTextStyle = _defaultTextStyle,
+    this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.twoBars,
         thirdBarValues = null,
         forthBarValues = null,
@@ -51,6 +52,7 @@ class CircularProgressBarGroup extends StatelessWidget {
     this.diameter = _defaultDiameter,
     this.arcThickness = _defaultArcThickness,
     this.indicatorTextStyle = _defaultTextStyle,
+    this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.threeBars,
         forthBarValues = null,
         assert(thirdBarValues != null),
@@ -65,6 +67,7 @@ class CircularProgressBarGroup extends StatelessWidget {
     this.diameter = _defaultDiameter,
     this.arcThickness = _defaultArcThickness,
     this.indicatorTextStyle = _defaultTextStyle,
+    this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.fourBars,
         assert(thirdBarValues != null),
         assert(forthBarValues != null),
@@ -78,6 +81,7 @@ class CircularProgressBarGroup extends StatelessWidget {
   final BarValues? forthBarValues;
   final _GroupBarTyp _type;
   final TextStyle indicatorTextStyle;
+  final ProgressValueWidgetBuilder? progressWidgetBuilder;
 
   int _getTotalPercentage() {
     switch (_type) {
@@ -132,7 +136,9 @@ class CircularProgressBarGroup extends StatelessWidget {
       child: SizedBox.square(
         dimension: diameter,
         child: Center(
-          child: _defaultProgressValueBuilder(_getTotalPercentage()),
+          child: progressWidgetBuilder != null
+              ? progressWidgetBuilder!(_getTotalPercentage())
+              : _defaultProgressValueBuilder(_getTotalPercentage()),
         ),
       ),
     );
