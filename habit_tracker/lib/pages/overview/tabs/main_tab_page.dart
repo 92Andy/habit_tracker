@@ -1,4 +1,5 @@
 import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
 import 'package:flutter/material.dart';
@@ -152,19 +153,65 @@ class _HabitProgress extends StatelessWidget {
           CircularProgressBarGroup.threeBars(
             arcThickness: 15,
             firstBarValues: BarValues(
-              color: HabitTrackerColors.azureBlue,
-              value: 80,
+              color: HabitTrackerColors.olympicBlue,
+              value: 70,
             ),
             secondBarValues: BarValues(
               color: HabitTrackerColors.purple,
               value: 60,
             ),
             thirdBarValues: BarValues(
-              color: HabitTrackerColors.olympicBlue,
-              value: 20,
+              color: HabitTrackerColors.azureBlue,
+              value: 80,
             ),
+            progressWidgetBuilder: (progressValue) =>
+                _InnerProgressValue(progressValue: progressValue),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _InnerProgressValue extends StatelessWidget {
+  const _InnerProgressValue({
+    Key? key,
+    required this.progressValue,
+  }) : super(key: key);
+
+  final int progressValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          colors: [
+            HabitTrackerColors.purpleLight,
+            HabitTrackerColors.azureBlue.withOpacity(.5),
+            HabitTrackerColors.olympicBlueLight.withOpacity(.7),
+          ],
+          stops: const [
+            0.2,
+            0.6,
+            0.9,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Center(
+        child: Text(
+          '${progressValue.toString()}%',
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: ui.FontWeight.bold,
+            fontSize: 26,
+          ),
+        ),
       ),
     );
   }
