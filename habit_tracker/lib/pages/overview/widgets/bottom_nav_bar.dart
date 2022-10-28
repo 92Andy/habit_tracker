@@ -14,7 +14,7 @@ class BottomNavBar extends StatefulWidget {
   final int currentIndex;
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  State<BottomNavBar> createState() => _BottomNavBarState();Test
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
