@@ -2,17 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:habit_tracker/page_navigation_controller.dart';
 
-class AddHabitButton extends StatelessWidget {
-  AddHabitButton({
+class NavToAddHabitButton extends StatelessWidget {
+  const NavToAddHabitButton({
     Key? key,
-    required this.navToAddHabitPage,
   }) : super(key: key);
 
-  final double _radius = 7.5.h;
+  final double _radius = 60;
   final double _blur = 2.5;
-  final VoidCallback navToAddHabitPage;
 
   BorderRadius get circularBorderRadius =>
       BorderRadius.all(Radius.circular(_radius));
@@ -42,13 +40,14 @@ class AddHabitButton extends StatelessWidget {
             ),
             child: MaterialButton(
               padding: EdgeInsets.zero,
-              onPressed: navToAddHabitPage,
+              onPressed:
+                  InheritedPageNavigationController.of(context).navToNextPage,
               shape: RoundedRectangleBorder(borderRadius: circularBorderRadius),
               splashColor: whiteWithSmallOpacity,
               highlightColor: whiteWithSmallOpacity,
               child: Icon(
                 Icons.add,
-                size: 30,
+                size: 25,
                 color: Theme.of(context).colorScheme.surface,
               ),
             ),

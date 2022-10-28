@@ -22,7 +22,7 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
     super.initState();
   }
 
-  void moveToNextPage() {
+  void navToNextPage() {
     _controller.nextPage(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
@@ -38,15 +38,40 @@ class _PageNavigationControllerState extends State<PageNavigationController> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      scrollDirection: Axis.vertical,
-      physics: const NeverScrollableScrollPhysics(),
-      controller: _controller,
-      children: [
-        StartPage(getStartedNavCallback: moveToNextPage),
-        OverviewPage(navToAddHabitPage: moveToNextPage),
-        AddHabitPage(navBack: navBack),
-      ],
+    return InheritedPageNavigationController(
+      navBack: navBack,
+      navToNextPage: navToNextPage,
+      child: PageView(
+        scrollDirection: Axis.vertical,
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _controller,
+        children: const [
+          StartPage(),
+          OverviewPage(),
+          AddHabitPage(),
+        ],
+      ),
     );
   }
+}
+
+class InheritedPageNavigationController extends InheritedWidget {
+  const InheritedPageNavigationController({
+    super.key,
+    required super.child,
+    required this.navBack,
+    required this.navToNextPage,
+  });
+
+  final VoidCallback navToNextPage;
+  final VoidCallback navBack;
+
+  @override
+  bool updateShouldNotify(InheritedPageNavigationController oldWidget) {
+    return navToNextPage != oldWidget.navToNextPage ||
+        navBack != oldWidget.navBack;
+  }
+
+  static InheritedPageNavigationController of(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<InheritedPageNavigationController>()!;
 }
