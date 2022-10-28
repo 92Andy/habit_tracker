@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
+import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -8,10 +9,7 @@ import 'package:rive/rive.dart';
 class StartPage extends StatelessWidget {
   const StartPage({
     Key? key,
-    required this.getStartedNavCallback,
   }) : super(key: key);
-
-  final VoidCallback getStartedNavCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,9 @@ class StartPage extends StatelessWidget {
                           child: Center(
                             child: StyledButton(
                               title: 'Get Started',
-                              onTap: () => getStartedNavCallback(),
+                              onTap: () =>
+                                  InheritedPageNavigationController.of(context)
+                                      .navToNextPage(),
                             ),
                           ),
                         )

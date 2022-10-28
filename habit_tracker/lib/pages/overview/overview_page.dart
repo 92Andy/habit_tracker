@@ -6,10 +6,7 @@ import 'package:habit_tracker/pages/overview/widgets/bottom_nav_bar.dart';
 class OverviewPage extends StatelessWidget {
   const OverviewPage({
     Key? key,
-    required this.navToAddHabitPage,
   }) : super(key: key);
-
-  final VoidCallback navToAddHabitPage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +21,6 @@ class OverviewPage extends StatelessWidget {
             BottomNavBar(
               currentIndex: 0,
               iconTapped: (i) {},
-              navToAddHabitPage: navToAddHabitPage,
             ),
           ],
         ),
