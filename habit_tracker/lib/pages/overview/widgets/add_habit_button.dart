@@ -2,15 +2,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
-import 'package:habit_tracker/page_navigation_controller.dart';
 
 class NavToAddHabitButton extends StatelessWidget {
   const NavToAddHabitButton({
     Key? key,
+    this.onTap,
   }) : super(key: key);
 
   final double _radius = 60;
   final double _blur = 2.5;
+  final VoidCallback? onTap;
 
   BorderRadius get circularBorderRadius =>
       BorderRadius.all(Radius.circular(_radius));
@@ -40,8 +41,7 @@ class NavToAddHabitButton extends StatelessWidget {
             ),
             child: MaterialButton(
               padding: EdgeInsets.zero,
-              onPressed:
-                  InheritedPageNavigationController.of(context).navToNextPage,
+              onPressed: onTap,
               shape: RoundedRectangleBorder(borderRadius: circularBorderRadius),
               splashColor: whiteWithSmallOpacity,
               highlightColor: whiteWithSmallOpacity,

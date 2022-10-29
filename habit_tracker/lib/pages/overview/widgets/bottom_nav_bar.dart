@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:habit_tracker/pages/overview/widgets/add_habit_button.dart';
+import 'package:habit_tracker/overview/widgets/add_habit_button.dart';
+import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -19,24 +20,24 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   final Duration _animationDurationInMilliseconds =
-      const Duration(milliseconds: 100);
-  final double _animationOpacity = 1.0;
-
-  bool _animationForward = false;
+      const Duration(milliseconds: 300);
+  double _animationOpacity = 0.0;
 
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 300), () {
-        updateAnimation();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        setState(() {
+          _animationOpacity = 1.0;
+        });
       });
     });
   }
 
-  void updateAnimation() {
+  void disappearNavBar() {
     setState(() {
-      _animationForward = !_animationForward;
+      _animationOpacity = 0;
     });
   }
 
@@ -45,6 +46,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return AnimatedOpacity(
       duration: _animationDurationInMilliseconds,
       opacity: _animationOpacity,
+      onEnd: () {
+        if (_animationOpacity == 0.0) {
+          InheritedPageNavigationController.of(context).navToNextPage();
+        }
+      },
       child: Align(
         alignment: Alignment.bottomCenter,
         child: CurvedContainer(
@@ -101,9 +107,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   ),
                 ),
               ),
-              const Align(
+              Align(
                 alignment: Alignment.center,
-                child: NavToAddHabitButton(),
+                child: NavToAddHabitButton(
+                  onTap: disappearNavBar,
+                ),
               ),
             ],
           ),
