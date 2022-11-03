@@ -46,8 +46,14 @@ class RoundSliderThumbShape extends SliderComponentShape {
   final double radius = 16;
   final Paint painter = Paint()
     ..shader = ui.Gradient.linear(
-        const Offset(0, 73),
-        const Offset(-50, 0),
+        const Offset(
+          0,
+          73,
+        ),
+        const Offset(
+          -50,
+          0,
+        ),
         [
           HabitTrackerColors.olympicBlue,
           HabitTrackerColors.azureBlue,

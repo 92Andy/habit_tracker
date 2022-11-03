@@ -53,7 +53,10 @@ class MainTabPage extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 70),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 50,
+              vertical: 70,
+            ),
             child: Column(
               children: const [
                 _GreetingUser(),

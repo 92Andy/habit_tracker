@@ -99,23 +99,56 @@ class _BottomCurveClipper extends CustomClipper<Path> {
 class _TopCurveClipper extends CustomClipper<Path> {
   final double leftRightEdgeYHeight = 40;
 
-  Offset leftCurvePoint(Size size) => Offset(size.width * .625, 37.5);
-  Offset leftEndPoint(Size size) => Offset(size.width * .575, 22.5);
+  Offset leftCurvePoint(Size size) => Offset(
+        size.width * .625,
+        37.5,
+      );
+  Offset leftEndPoint(Size size) => Offset(
+        size.width * .575,
+        22.5,
+      );
 
-  Offset middleCurvePoint(Size size) => Offset(size.width * .5, 0);
-  Offset middleEndPoint(Size size) => Offset(size.width * .425, 22.5);
+  Offset middleCurvePoint(Size size) => Offset(
+        size.width * .5,
+        0,
+      );
+  Offset middleEndPoint(Size size) => Offset(
+        size.width * .425,
+        22.5,
+      );
 
-  Offset rightCurvePoint(Size size) => Offset(size.width * .375, 37.5);
-  Offset rightEndPoint(Size size) => Offset(size.width * .25, 37.5);
+  Offset rightCurvePoint(Size size) => Offset(
+        size.width * .375,
+        37.5,
+      );
+  Offset rightEndPoint(Size size) => Offset(
+        size.width * .25,
+        37.5,
+      );
 
   @override
   Path getClip(Size size) {
     Path path = Path()
-      ..moveTo(0, leftRightEdgeYHeight)
-      ..lineTo(0, size.height) // p1
-      ..lineTo(size.width, size.height) // p2
-      ..lineTo(size.width, leftRightEdgeYHeight)
-      ..lineTo(size.width * 0.75, 37.5) // p3
+      ..moveTo(
+        0,
+        leftRightEdgeYHeight,
+      )
+      ..lineTo(
+        0,
+        size.height,
+      ) // p1
+      ..lineTo(
+        size.width,
+        size.height,
+      ) // p2
+      ..lineTo(
+        size.width,
+        leftRightEdgeYHeight,
+      )
+      ..lineTo(
+        size.width * 0.75,
+        37.5,
+      ) // p3
       ..quadraticBezierTo(
         leftCurvePoint(size).dx,
         leftCurvePoint(size).dy,

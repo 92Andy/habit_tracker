@@ -43,7 +43,10 @@ class HabitTrackerAppBar extends StatelessWidget
       ),
       curveType: ContainerCurveType.bottom,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        filter: ImageFilter.blur(
+          sigmaX: 20,
+          sigmaY: 20,
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Stack(

@@ -26,7 +26,10 @@ class StyledButton extends StatelessWidget {
             color: Theme.of(context).colorScheme.tertiary,
             spreadRadius: -5,
             blurRadius: 10,
-            offset: const Offset(0, 15),
+            offset: const Offset(
+              0,
+              15,
+            ),
           ),
         ],
         gradient: styledDarkGradient,
