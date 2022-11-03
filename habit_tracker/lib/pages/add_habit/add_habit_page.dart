@@ -54,22 +54,24 @@ class AddHabitPage extends StatelessWidget {
         gradient: styledLightGradient,
       ),
       child: Scaffold(
-        body: Column(
-          children: [
-            HabitTrackerAppBar(
-              title: 'Add habit',
-              onBackTapped:
-                  InheritedPageNavigationController.of(context).navBack,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(
-                top: 30,
-                left: 30,
-                right: 30,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              HabitTrackerAppBar(
+                title: 'Add habit',
+                onBackTapped:
+                    InheritedPageNavigationController.of(context).navBack,
               ),
-              child: _AddHabitView(),
-            ),
-          ],
+              const Padding(
+                padding: EdgeInsets.only(
+                  top: 30,
+                  left: 30,
+                  right: 30,
+                ),
+                child: _AddHabitView(),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -97,81 +99,79 @@ class _AddHabitViewState extends State<_AddHabitView> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Habit title',
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          smallSpacer,
-          _WhiteRoundedContainer(
-            height: 60,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 5,
-                horizontal: 15,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Habit title',
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        smallSpacer,
+        _WhiteRoundedContainer(
+          height: 60,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 15,
+            ),
+            child: TextField(
+              controller: _habitTitleController,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Enter Habit Title',
+                hintStyle: Theme.of(context).textTheme.bodyText1,
               ),
-              child: TextField(
-                controller: _habitTitleController,
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Habit Title',
-                  hintStyle: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
+        ),
+        middleSpacer,
+        Text(
+          'Choose an Activity',
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        smallSpacer,
+        _WhiteRoundedContainer(
+          height: 330,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: Column(
+              children: [
+                Wrap(
+                  alignment: WrapAlignment.start,
+                  runSpacing: 8,
+                  spacing: 10,
+                  children: iconButtons,
                 ),
-              ),
-            ),
-          ),
-          middleSpacer,
-          Text(
-            'Choose an Activity',
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          smallSpacer,
-          _WhiteRoundedContainer(
-            height: 330,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 25),
-              child: Column(
-                children: [
-                  Wrap(
-                    alignment: WrapAlignment.start,
-                    runSpacing: 8,
-                    spacing: 10,
-                    children: iconButtons,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 35),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Select a goal',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 35),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Select a goal',
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
-                  middleSpacer,
-                  const Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: GoalGradientSlider(),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                middleSpacer,
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: GoalGradientSlider(),
+                  ),
+                )
+              ],
             ),
           ),
-          middleSpacer,
-          const Center(
-            child: StyledButton(title: 'Add Habit'),
-          ),
-        ],
-      ),
+        ),
+        middleSpacer,
+        const Center(
+          child: StyledButton(title: 'Add Habit'),
+        ),
+      ],
     );
   }
 }
