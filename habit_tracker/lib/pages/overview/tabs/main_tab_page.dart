@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
-import 'dart:ui';
 
-import 'package:circular_progress_bar_group/circular_progress_bar_group.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/circular_progress_bar_group.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/models/bar_values.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/pages/overview/models/habit.dart';
 import 'package:habit_tracker/widgets/icon_asset_button.dart';

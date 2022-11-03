@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:habit_tracker/overview/widgets/add_habit_button.dart';
 import 'package:habit_tracker/page_navigation_controller.dart';
+import 'package:habit_tracker/pages/overview/widgets/add_habit_button.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 
 class BottomNavBar extends StatefulWidget {

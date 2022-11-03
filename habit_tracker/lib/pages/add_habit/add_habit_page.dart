@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/page_navigation_controller.dart';
+import 'package:habit_tracker/pages/add_habit/widgets/custom_shaped_dark_app_bar.dart';
+import 'package:habit_tracker/pages/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/widgets/icon_asset_button.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
