@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
+import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -10,11 +11,9 @@ class HabitTrackerAppBar extends StatelessWidget
   HabitTrackerAppBar({
     Key? key,
     required this.title,
-    this.onBackTapped,
   }) : super(key: key);
 
   final String title;
-  final VoidCallback? onBackTapped;
 
   final double _height = 15.h;
 
@@ -51,23 +50,9 @@ class HabitTrackerAppBar extends StatelessWidget
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Stack(
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundColor:
-                      HabitTrackerColors.surfaceWhite.withOpacity(0.1),
-                  child: IconButton(
-                    onPressed: onBackTapped,
-                    splashColor:
-                        HabitTrackerColors.surfaceWhite.withOpacity(0.1),
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 20,
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  ),
-                ),
+                child: _NavBackButton(),
               ),
               Align(
                 alignment: Alignment.center,
@@ -86,6 +71,37 @@ class HabitTrackerAppBar extends StatelessWidget
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NavBackButton extends StatelessWidget {
+  const _NavBackButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: 50,
+      child: MaterialButton(
+        padding: EdgeInsets.zero,
+        onPressed: InheritedPageNavigationController.of(context).navBack,
+        color: Colors.white.withOpacity(0.15),
+        elevation: 0,
+        highlightElevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        splashColor: Colors.white.withOpacity(0.1),
+        highlightColor: Colors.transparent,
+        child: Icon(
+          Icons.arrow_back,
+          size: 20,
+          color: Theme.of(context).colorScheme.surface,
         ),
       ),
     );
