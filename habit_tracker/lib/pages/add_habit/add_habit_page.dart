@@ -59,8 +59,6 @@ class AddHabitPage extends StatelessWidget {
             children: [
               HabitTrackerAppBar(
                 title: 'Add habit',
-                onBackTapped:
-                    InheritedPageNavigationController.of(context).navBack,
               ),
               const Padding(
                 padding: EdgeInsets.only(
