@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/utils/progress_bar_painter.dart';
 import 'package:flutter/material.dart';
 
 enum FullCircularStartPoint {
@@ -105,39 +105,19 @@ class _FullCircularProgressBarPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const sweepAngle = pi * 2;
     final startAngle = startPoint.getRadian();
-    final rect = Offset.zero & size;
 
-    final paint = Paint()
-      ..strokeWidth = thickness
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
-
-    if (gradient != null) {
-      paint.shader = gradient;
-    } else {
-      paint.color = color;
-    }
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      max(sweepAngle * value, precisionErrorTolerance),
-      false,
-      paint,
+    final paintInfo = ProgressBarPaintInformation(
+      canvas: canvas,
+      size: size,
+      thickness: thickness,
+      progressValue: value,
+      color: color,
+      backgroundOpacity: arcBackgroundOpacity,
+      startAngle: startAngle,
+      sweepAngle: sweepAngle,
     );
 
-    canvas.saveLayer(
-        rect, Paint()..color = Colors.white.withOpacity(arcBackgroundOpacity));
-
-    canvas.drawArc(
-      rect.deflate(thickness / 2),
-      startAngle,
-      sweepAngle,
-      false,
-      paint,
-    );
-
-    canvas.restore();
+    ProgressBarPainter.paint(paintInfo);
   }
 
   @override
