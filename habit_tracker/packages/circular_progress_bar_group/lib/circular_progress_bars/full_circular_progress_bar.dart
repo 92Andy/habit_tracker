@@ -1,5 +1,7 @@
 import 'dart:math';
-import 'dart:ui' as ui;
+
+import 'package:circular_progress_bar_group/circular_progress_bars/models/bar_values.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/utils/defaults.dart';
 import 'package:circular_progress_bar_group/circular_progress_bars/utils/progress_bar_painter.dart';
 import 'package:flutter/material.dart';
 
@@ -30,24 +32,18 @@ const fullProgressBarDefaultColor = Color(0xffFF9671);
 class FullCircularProgressBar extends StatefulWidget {
   const FullCircularProgressBar({
     Key? key,
-    this.diameter = 200,
-    this.arcThickness = 20,
-    this.value = 20,
-    this.startPoint = FullCircularStartPoint.bottom,
-    this.arcBackgroundOpacity = 0.3,
-    this.color = fullProgressBarDefaultColor,
-    this.gradient,
-    this.progressIndicatorStyle,
+    required this.progressBarValue,
+    this.startPoint = FullCircularStartPoint.left,
+    this.diameter = defaultDiameter,
+    this.arcThickness = defaultArcThickness,
+    this.progressWidgetBuilder,
   }) : super(key: key);
 
+  final FullCircularStartPoint startPoint;
+  final BarValues progressBarValue;
   final double diameter;
   final double arcThickness;
-  final double value;
-  final FullCircularStartPoint startPoint;
-  final double arcBackgroundOpacity;
-  final Color color;
-  final ui.Gradient? gradient;
-  final TextStyle? progressIndicatorStyle;
+  final ProgressValueWidgetBuilder? progressWidgetBuilder;
 
   @override
   State<FullCircularProgressBar> createState() =>
@@ -59,25 +55,17 @@ class _FullCircularProgressBarState extends State<FullCircularProgressBar> {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _FullCircularProgressBarPainter(
-        value: widget.value / 100,
+        value: widget.progressBarValue.value / 100,
         thickness: widget.arcThickness,
         startPoint: widget.startPoint,
-        arcBackgroundOpacity: widget.arcBackgroundOpacity,
-        color: widget.color,
-        gradient: widget.gradient,
+        arcBackgroundOpacity: widget.progressBarValue.arcBackgroundOpacity,
+        color: widget.progressBarValue.color,
       ),
       child: SizedBox.square(
         dimension: widget.diameter,
         child: Center(
-          child: Text(
-            '${(widget.value).floor()}%',
-            style: widget.progressIndicatorStyle ??
-                const TextStyle(
-                  color: fullProgressBarDefaultColor,
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
+          child: defaultProgressValueBuilder(
+              widget.progressBarValue.value.floor()),
         ),
       ),
     );
@@ -91,7 +79,6 @@ class _FullCircularProgressBarPainter extends CustomPainter {
     required this.startPoint,
     required this.color,
     required this.arcBackgroundOpacity,
-    this.gradient,
   });
 
   final double value;
@@ -99,7 +86,6 @@ class _FullCircularProgressBarPainter extends CustomPainter {
   final FullCircularStartPoint startPoint;
   final double arcBackgroundOpacity;
   final Color color;
-  final ui.Gradient? gradient;
 
   @override
   void paint(Canvas canvas, Size size) {

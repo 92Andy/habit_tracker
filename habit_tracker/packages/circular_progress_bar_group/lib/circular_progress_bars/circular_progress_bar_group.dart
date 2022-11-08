@@ -1,28 +1,9 @@
 import 'dart:math';
 
 import 'package:circular_progress_bar_group/circular_progress_bars/models/bar_values.dart';
+import 'package:circular_progress_bar_group/circular_progress_bars/utils/defaults.dart';
 import 'package:circular_progress_bar_group/circular_progress_bars/utils/progress_bar_painter.dart';
 import 'package:flutter/material.dart';
-
-const double _defaultArcThickness = 20;
-const double _defaultDiameter = 180;
-const TextStyle _defaultTextStyle = TextStyle(
-  color: firstSplitBarDefaultColor,
-  fontSize: 30,
-  fontWeight: FontWeight.bold,
-);
-
-typedef ProgressValueWidgetBuilder = Widget Function(int progressValue);
-
-ProgressValueWidgetBuilder _defaultProgressValueBuilder =
-    (progressValue) => Text(
-          '$progressValue %',
-          style: const TextStyle(
-            color: firstSplitBarDefaultColor,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        );
 
 enum _GroupBarTyp {
   twoBars,
@@ -35,9 +16,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     Key? key,
     required this.firstBarValues,
     required this.secondBarValues,
-    this.diameter = _defaultDiameter,
-    this.arcThickness = _defaultArcThickness,
-    this.indicatorTextStyle = _defaultTextStyle,
+    this.diameter = defaultDiameter,
+    this.arcThickness = defaultArcThickness,
+    this.indicatorTextStyle = defaultTextStyle,
     this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.twoBars,
         thirdBarValues = null,
@@ -49,9 +30,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     required this.firstBarValues,
     required this.secondBarValues,
     required this.thirdBarValues,
-    this.diameter = _defaultDiameter,
-    this.arcThickness = _defaultArcThickness,
-    this.indicatorTextStyle = _defaultTextStyle,
+    this.diameter = defaultDiameter,
+    this.arcThickness = defaultArcThickness,
+    this.indicatorTextStyle = defaultTextStyle,
     this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.threeBars,
         forthBarValues = null,
@@ -64,9 +45,9 @@ class CircularProgressBarGroup extends StatelessWidget {
     required this.secondBarValues,
     required this.thirdBarValues,
     required this.forthBarValues,
-    this.diameter = _defaultDiameter,
-    this.arcThickness = _defaultArcThickness,
-    this.indicatorTextStyle = _defaultTextStyle,
+    this.diameter = defaultDiameter,
+    this.arcThickness = defaultArcThickness,
+    this.indicatorTextStyle = defaultTextStyle,
     this.progressWidgetBuilder,
   })  : _type = _GroupBarTyp.fourBars,
         assert(thirdBarValues != null),
@@ -138,7 +119,7 @@ class CircularProgressBarGroup extends StatelessWidget {
         child: Center(
           child: progressWidgetBuilder != null
               ? progressWidgetBuilder!(_getTotalPercentage())
-              : _defaultProgressValueBuilder(_getTotalPercentage()),
+              : defaultProgressValueBuilder(_getTotalPercentage()),
         ),
       ),
     );

@@ -11,6 +11,3 @@ class BarValues {
   final Color color;
   final double arcBackgroundOpacity;
 }
-
-const firstSplitBarDefaultColor = Color(0xffFF9671);
-const secondSplitBarDefaultColor = Color(0xffFF6F91);
