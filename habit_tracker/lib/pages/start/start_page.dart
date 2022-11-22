@@ -3,7 +3,6 @@ import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
 import 'package:habit_tracker/widgets/styled_button.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:rive/rive.dart';
 
 class StartPage extends StatelessWidget {
@@ -24,12 +23,12 @@ class StartPage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: CurvedContainer(
-                height: 50.h,
+                height: MediaQuery.of(context).size.height / 2,
                 color: Theme.of(context).colorScheme.surface,
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: SizedBox(
-                    height: 35.h,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 60),
                     child: Column(
                       children: [
                         Text(
@@ -85,7 +84,7 @@ class _Shaker extends StatelessWidget {
     return Transform.rotate(
       angle: 50.0,
       child: SizedBox(
-        height: 85.h,
+        height: MediaQuery.of(context).size.height * 8,
         child: const RiveAnimation.asset('assets/rive/shaker.riv'),
       ),
     );

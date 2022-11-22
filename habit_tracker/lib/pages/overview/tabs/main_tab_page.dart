@@ -9,7 +9,6 @@ import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 final List<Habit> todaysHabits = [
   Habit(
@@ -50,25 +49,34 @@ class MainTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 50,
-              vertical: 70,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                child: Column(
+                  children: const [
+                    Spacer(),
+                    _GreetingUser(),
+                    Spacer(),
+                    _HabitProgress(),
+                    Spacer(),
+                  ],
+                ),
+              ),
             ),
-            child: Column(
-              children: const [
-                _GreetingUser(),
-                _HabitProgress(),
-              ],
+            const Flexible(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: _TodaysHabits(),
+              ),
             ),
-          ),
-          const Align(
-            alignment: Alignment.bottomCenter,
-            child: _TodaysHabits(),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -125,53 +133,50 @@ class _HabitProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 35.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _ProgressEntry(
-                iconData: Icons.bed_rounded,
-                iconColor: HabitTrackerColors.azureBlue,
-                name: 'Sleep',
-              ),
-              _spacer,
-              _ProgressEntry(
-                iconData: Icons.directions_walk_outlined,
-                iconColor: HabitTrackerColors.purple,
-                name: 'Walking',
-              ),
-              _spacer,
-              _ProgressEntry(
-                iconData: Icons.directions_bike_outlined,
-                iconColor: HabitTrackerColors.olympicBlue,
-                name: 'Cycling',
-              ),
-            ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _ProgressEntry(
+              iconData: Icons.bed_rounded,
+              iconColor: HabitTrackerColors.azureBlue,
+              name: 'Sleep',
+            ),
+            _spacer,
+            _ProgressEntry(
+              iconData: Icons.directions_walk_outlined,
+              iconColor: HabitTrackerColors.purple,
+              name: 'Walking',
+            ),
+            _spacer,
+            _ProgressEntry(
+              iconData: Icons.directions_bike_outlined,
+              iconColor: HabitTrackerColors.olympicBlue,
+              name: 'Cycling',
+            ),
+          ],
+        ),
+        CircularProgressBarGroup.threeBars(
+          arcThickness: 15,
+          firstBarValues: BarValues(
+            color: HabitTrackerColors.olympicBlue,
+            value: 70,
           ),
-          CircularProgressBarGroup.threeBars(
-            arcThickness: 15,
-            firstBarValues: BarValues(
-              color: HabitTrackerColors.olympicBlue,
-              value: 70,
-            ),
-            secondBarValues: BarValues(
-              color: HabitTrackerColors.purple,
-              value: 60,
-            ),
-            thirdBarValues: BarValues(
-              color: HabitTrackerColors.azureBlue,
-              value: 80,
-            ),
-            progressWidgetBuilder: (progressValue) =>
-                _InnerProgressValue(progressValue: progressValue),
+          secondBarValues: BarValues(
+            color: HabitTrackerColors.purple,
+            value: 60,
           ),
-        ],
-      ),
+          thirdBarValues: BarValues(
+            color: HabitTrackerColors.azureBlue,
+            value: 80,
+          ),
+          progressWidgetBuilder: (progressValue) =>
+              _InnerProgressValue(progressValue: progressValue),
+        ),
+      ],
     );
   }
 }
@@ -240,7 +245,7 @@ class _ProgressEntry extends StatelessWidget {
         Icon(
           iconData,
           color: iconColor,
-          size: 3.h,
+          size: 25,
         ),
         const SizedBox(
           width: 10,
@@ -260,7 +265,7 @@ class _TodaysHabits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedContainer(
-      height: 55.h,
+      height: MediaQuery.of(context).size.height / 2,
       boxDecoration: BoxDecoration(
         gradient: styledFullGradient,
       ),
@@ -271,10 +276,10 @@ class _TodaysHabits extends StatelessWidget {
             color: Colors.white.withOpacity(0.05),
           ),
           child: Padding(
-            padding: EdgeInsets.only(
-              top: 8.h,
-              left: 10.w,
-              right: 10.w,
+            padding: const EdgeInsets.only(
+              top: 50,
+              left: 30,
+              right: 30,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,7 +294,7 @@ class _TodaysHabits extends StatelessWidget {
                           ),
                     ),
                     CircleAvatar(
-                      radius: 6.w,
+                      radius: 25,
                       backgroundColor:
                           HabitTrackerColors.surfaceWhite.withOpacity(0.1),
                       child: IconButton(

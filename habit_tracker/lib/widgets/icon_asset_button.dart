@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/constants/habit_tracker_icons.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class IconAssetButton extends StatefulWidget {
   const IconAssetButton({
@@ -94,12 +93,12 @@ class _IconAssetButtonState extends State<IconAssetButton>
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 8.w,
+      radius: 25,
       backgroundColor: backGroundColor,
       child: IconButton(
         icon: Image.asset(
           _iconAssetString,
-          height: 6.w - (6.w * _animation.value),
+          height: 20 - (20 * _animation.value),
           color: iconColor,
         ),
         onPressed: () {
