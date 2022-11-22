@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_gradients.dart';
-import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/pages/add_habit/widgets/custom_shaped_dark_app_bar.dart';
 import 'package:habit_tracker/pages/add_habit/widgets/goal_gradient_slider.dart';
 import 'package:habit_tracker/widgets/icon_asset_button.dart';
@@ -49,18 +48,19 @@ class AddHabitPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         gradient: styledLightGradient,
       ),
       child: Scaffold(
         body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           child: Column(
-            children: [
+            children: const [
               HabitTrackerAppBar(
                 title: 'Add habit',
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   top: 30,
                   left: 30,
@@ -169,6 +169,7 @@ class _AddHabitViewState extends State<_AddHabitView> {
         const Center(
           child: StyledButton(title: 'Add Habit'),
         ),
+        middleSpacer,
       ],
     );
   }

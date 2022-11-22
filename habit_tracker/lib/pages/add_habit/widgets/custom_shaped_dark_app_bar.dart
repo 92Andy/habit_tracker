@@ -4,18 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/constants/habit_tracker_colors.dart';
 import 'package:habit_tracker/page_navigation_controller.dart';
 import 'package:habit_tracker/widgets/curved_container.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HabitTrackerAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  HabitTrackerAppBar({
+  const HabitTrackerAppBar({
     Key? key,
     required this.title,
   }) : super(key: key);
 
   final String title;
 
-  final double _height = 15.h;
+  final double _height = 125;
 
   @override
   Size get preferredSize => Size.fromHeight(_height);
@@ -23,7 +22,7 @@ class HabitTrackerAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CurvedContainer(
-      height: 18.h,
+      height: _height,
       boxDecoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -46,30 +45,40 @@ class HabitTrackerAppBar extends StatelessWidget
           sigmaX: 20,
           sigmaY: 20,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Stack(
-            children: [
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: _NavBackButton(),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline2!
-                          .copyWith(color: Colors.white),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: _height / 3,
+              left: 12,
+              right: 12,
+            ),
+            child: SizedBox(
+              height: 55,
+              child: Stack(
+                children: [
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: _NavBackButton(),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline2!
+                              .copyWith(color: Colors.white),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
