@@ -1,7 +1,7 @@
-# Flutter beautiful UI's
-
-Here you can find a collection of beautiful designed Apps 
-developed in Flutter with hard work and :heart:
+# Flutter Habit Tracker
 
 ## 🚧 README is work in progress 🚧
-Todo: better description...
+
+## Design
+You can find this design here: https://dribbble.com/shots/15880150-Habit-Tracker-Mobile-App-UI-Design
+

@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "habit_tracker",
+            "name": "flutter_habit_tracker",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "habit_tracker (profile mode)",
+            "name": "flutter_habit_tracker (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "habit_tracker (release mode)",
+            "name": "flutter_habit_tracker (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
