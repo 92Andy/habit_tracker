@@ -1,4 +1,4 @@
-# Flutter Habit Tracker
+# Habit Tracker
 
 ## 🚧 README is work in progress 🚧
 
