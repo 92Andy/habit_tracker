@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/andyeckhardt/.asdf/installs/flutter/3.3.0-stable"
-export "FLUTTER_APPLICATION_PATH=/Users/andyeckhardt/Programming/Flutter/habit_tracker"
+export "FLUTTER_APPLICATION_PATH=/Users/andyeckhardt/Programming/Flutter/habit_tracker/habit_tracker"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
