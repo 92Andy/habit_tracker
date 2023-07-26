@@ -152,10 +152,11 @@ class _GradientRectSliderTrackShape extends SliderTrackShape
     required RenderBox parentBox,
     required SliderThemeData sliderTheme,
     required Animation<double> enableAnimation,
-    required TextDirection textDirection,
     required Offset thumbCenter,
-    bool isDiscrete = false,
+    Offset? secondaryOffset,
     bool isEnabled = false,
+    bool isDiscrete = false,
+    required TextDirection textDirection,
     double additionalActiveTrackHeight = 2,
   }) {
     assert(sliderTheme.disabledActiveTrackColor != null);

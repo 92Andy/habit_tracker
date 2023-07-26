@@ -27,7 +27,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(milliseconds: 400), () {
+      Future<void>.delayed(const Duration(milliseconds: 400), () {
         setState(() {
           _animationOpacity = 1.0;
         });
